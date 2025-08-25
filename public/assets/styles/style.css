@@ -3923,7 +3923,7 @@ ul.paginationItems li a:hover {
 .responsive_menu {
     display: none;
     align-items: center;
-    background: #333;
+    background: whitesmoke;
     padding: 5px 20px;
     min-height: 70px;
     column-gap: 10px
