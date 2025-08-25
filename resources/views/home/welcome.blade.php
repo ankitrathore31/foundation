@@ -7,15 +7,6 @@
                 <div class="container-fluid p-0">
                     <div class="dark_slider">
                         <img src="{{ asset('images/featured/slider.jpg') }}" alt="">
-                        <div class="darkSliderTextWrap">
-                            <div class="container">
-                                <div class="darkSlider_text anm" data-speed-y="3" data-speed-x="3" data-speed-scale="1.2"
-                                    data-speed-opacity="0.4">
-                                    <h3>Dayaram<strong>Foundation</strong> <br> Empowering Lives <br> through
-                                        <strong>Education & Care</strong></h3>
-                                </div>
-                            </div>
-                        </div>
                     </div>
                 </div>
             </div>
