@@ -222,7 +222,8 @@ svg.curve_img {position: absolute;left: 0;top: 0;width: 100%;z-index: -1;}
 
 ion-icon {pointer-events: none;}
 /*=============== Transparent Header ===================*/
-header.transparent {position: absolute;left: 0;top: 0;width: 100%; color: #FFF;z-index:3;}
+header.transparent {position: absolute;left: 0;top: 0;width: 100%; color: #FFF;
+                    background-color: #007bb6; z-index:3;}
 .header_wrap.container {display: flex;align-items: center;}
 .header_wrap {display: flex;padding: 20px 15px 0;align-items: center;}
 
