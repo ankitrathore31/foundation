@@ -1,7 +1,7 @@
       <header class="title">
           <div class="header_wrap container-title">
               <div class="logo">
-                  <a href="{{url('/')}}" title="Dayaram Foundation">
+                  <a href="{{ url('/') }}" title="Dayaram Foundation">
                       <img src="images/logo1.png" width="120" height="120" alt="Dayaram Foundation">
                   </a>
               </div>
@@ -9,7 +9,8 @@
               <div class="justify-content-center">
                   <h2 style="color:red;  margin: 0;"><b>DAYARAM FOUNDATION</b></h2>
                   <h6 style="color: black; margin: 0;"><b>Empowering Communities, Changing Lives</b></h6>
-                  <h6 style="color: blue;  margin: 0;"><b>Address: Jangroli Pul Rooppur Kamalu Pilibhit UP 262001</b></h6>
+                  <h6 style="color: blue;  margin: 0;"><b>Address: Jangroli Pul Rooppur Kamalu Pilibhit UP 262001</b>
+                  </h6>
               </div>
 
               <div class="butttons_group">
@@ -67,7 +68,6 @@
               </button>
           </div>
 
-
           <div class="responsiveNavigation">
               <ul>
                   <li><a href="{{ url('/') }}"> Home </a>
@@ -80,9 +80,14 @@
                   </li>
                   <li><a href=""> Service </a>
                   </li>
+                  <li><a href="">Donation </a>
+                  </li>
                   <li><a href=""> Gallery </a>
                   </li>
+                  <li><a href=""> Notice Board </a>
+                  </li>
                   <li><a href=""> Contact Us </a></li>
+                  <li><a href=""> Login </a></li>
               </ul>
           </div>
       </div> <!-- Responsive Menu -->

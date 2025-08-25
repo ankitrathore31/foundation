@@ -12,8 +12,6 @@
             </div>
         </section>
 
-
-
         <section style="margin-top: 55px !important;">
             <div class="block pt-0 pattern1">
                 <div class="container">
@@ -153,7 +151,6 @@
             </div>
         </section>
 
-
         <section>
             <div class="block evc_dark bottomPadding_low">
                 <div class="container">
@@ -206,16 +203,6 @@
                                 </div>
                             </div>
                         </div>
-                        {{-- <div class="col-lg-4 col-md-6">
-                            <div class="evercare_donor">
-                                <div class="donor_img"> <img src="assets/images/team/3.jpg" alt=""> </div>
-                                <div class="donor_info">
-                                    <i>Food</i>
-                                    <h3>Feeding Free Food</h3>
-                                    <span>Donated Now</span>
-                                </div>
-                            </div>
-                        </div> --}}
                     </div>
                 </div>
             </div>
@@ -322,7 +309,6 @@
                 </div>
             </div>
         </section>
-
 
     </div>
 @endsection
