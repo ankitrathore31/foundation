@@ -23,31 +23,34 @@
     <meta property="og:url" content="{{ url()->current() }}">
     <meta property="og:type" content="website">
 
-    {{-- ✅ Styles --}}
-    <link rel="stylesheet" href="{{ asset('assets/styles/bootstrap.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('assets/styles/fancyBox.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('assets/styles/style.css') }}">
+    {{-- ✅ Only Bootstrap Styles --}}
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <!-- Font Awesome CDN -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" rel="stylesheet">
+
 </head>
 
 <body>
 
-
     @include('home.sidebar.sidebar')
-    
+
     @yield('content')
 
     @include('home.footer.footer')
+
     {{-- ✅ Scripts --}}
+    <!-- jQuery (keep only if your scripts need it) -->
     <script src="{{ asset('assets/scripts/jquery.min.js') }}"></script>
-    <script src="{{ asset('assets/scripts/bootstrap.min.js') }}"></script>
+
+    <!-- Bootstrap 5 JS Bundle CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous">
+    </script>
 
     {{-- Ionicons --}}
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
-
-    <script src="{{ asset('assets/scripts/slick.min.js') }}"></script>
-    <script src="{{ asset('assets/scripts/fancyBox.min.js') }}"></script>
-    <script src="{{ asset('assets/scripts/scripts.js') }}"></script>
 
 </body>
 
