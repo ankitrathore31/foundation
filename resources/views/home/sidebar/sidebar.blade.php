@@ -1,93 +1,60 @@
-      <header class="title">
-          <div class="header_wrap container-title">
-              <div class="logo">
-                  <a href="{{ url('/') }}" title="Dayaram Foundation">
-                      <img src="images/logo1.png" width="120" height="120" alt="Dayaram Foundation">
-                  </a>
-              </div>
+<header class="bg-light border-bottom">
+    <div class="container py-2 d-flex flex-column flex-md-row align-items-center justify-content-between">
 
-              <div class="justify-content-center">
-                  <h2 style="color:red;  margin: 0;"><b>DAYARAM FOUNDATION</b></h2>
-                  <h6 style="color: black; margin: 0;"><b>Empowering Communities, Changing Lives</b></h6>
-                  <h6 style="color: blue;  margin: 0;"><b>Address: Jangroli Pul Rooppur Kamalu Pilibhit UP 262001</b>
-                  </h6>
-              </div>
+        <!-- Logo + Title -->
+        <div class="d-flex align-items-center">
+            <!-- Logo -->
+            <a href="{{ url('/') }}" title="Dayaram Foundation" class="me-5">
+                <img src="images/logo1.png" width="80" height="80" alt="Dayaram Foundation">
+            </a>
 
-              <div class="butttons_group">
-                  <a class="theme-btn green" data-bs-toggle="modal" data-bs-target="#donationModal" href="#"
-                      title="">Donate Now</a>
-                  {{-- <a class="theme-btn" href="#" title="">Volunteer</a> --}}
-              </div>
-          </div>
-      </header><!-- Header -->
-      <header class="transparent">
-          <div class="header_wrap">
-              <nav>
-                  <ul>
-                      <li><a href="{{ url('/') }}"> Home </a>
-                      </li>
-                      <li><a href="#"> About Us </a>
-                      </li>
-                      <li><a href="#"> Activity</a>
-                      </li>
-                      <li><a href="#"> Project</a>
-                      </li>
-                      <li><a href=""> Service </a>
-                      </li>
-                      <li><a href="">Donation </a>
-                      </li>
-                      <li><a href=""> Gallery </a>
-                      </li>
-                      <li><a href=""> Notice Board </a>
-                      </li>
-                      <li><a href=""> Contact Us </a></li>
-                      <li><a href=""> Login </a></li>
-                  </ul>
-              </nav>
-          </div>
-      </header><!-- Header -->
-      <div class="responsive_menu">
-          <div class="logo"> <a href="#" title=""><img src="images/logo1.png" width="50"
-                      height="50" alt=""></a> </div>
+            <!-- Title -->
+            <div class="text-start">
+                <h2 class="m-0 text-danger fw-bold">DAYARAM FOUNDATION</h2>
+                <h6 class="m-0 text-dark fw-bold">Empowering Communities, Changing Lives</h6>
+                <h6 class="m-0 text-primary fw-bold">Address: Jangroli Pul Pilibhit UP 262001</h6>
+            </div>
+        </div>
+
+        <!-- Donate Button -->
+        <div class="mt-3 mt-md-0">
+            <a class="btn btn-success fw-bold px-4"
+                href="{{route('donation')}}">
+                Donate Now
+            </a>
+        </div>
+    </div>
+</header>
 
 
-          <div class="butttons_group ms-auto">
-              <a class="theme-btn smallest green" data-bs-toggle="modal" data-bs-target="#donationModal" href="#"
-                  title="">Donate Now</a>
-              <button id="hamburger">
-                  <svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" width="30"
-                      height="30" viewBox="0 0 30 30">
-                      <path id="top" class="line"
-                          d="M166.18,102.56h25s7.52-.43,5-5.29c-2.89-5.65-8.7,2.07-8.7,2.07L169.84,117"
-                          transform="translate(-166.18 -94.7)" />
-                      <path id="bottom" class="line"
-                          d="M166.18,113.77h25s7.52.43,5,5.29c-2.89,5.64-8.7-2.07-8.7-2.07L169.84,99.31"
-                          transform="translate(-166.18 -94.7)" />
-                      <line id="middle" class="line" y1="13.48" x2="25" y2="13.48" x1="0" />
-                  </svg>
-              </button>
-          </div>
+<!-- ✅ Responsive Bootstrap Navbar -->
+<nav class="navbar navbar-expand-md navbar-dark bg-danger">
+    <div class="container">
+        <!-- Brand (mobile view only if needed) -->
+        <a class="navbar-brand d-md-none fw-bold" href="{{ url('/') }}">Dayaram Foundation</a>
 
-          <div class="responsiveNavigation">
-              <ul>
-                  <li><a href="{{ url('/') }}"> Home </a>
-                  </li>
-                  <li><a href="#"> About Us </a>
-                  </li>
-                  <li><a href="#"> Activity</a>
-                  </li>
-                  <li><a href="#"> Project</a>
-                  </li>
-                  <li><a href=""> Service </a>
-                  </li>
-                  <li><a href="">Donation </a>
-                  </li>
-                  <li><a href=""> Gallery </a>
-                  </li>
-                  <li><a href=""> Notice Board </a>
-                  </li>
-                  <li><a href=""> Contact Us </a></li>
-                  <li><a href=""> Login </a></li>
-              </ul>
-          </div>
-      </div> <!-- Responsive Menu -->
+        <!-- Hamburger Menu -->
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar"
+            aria-controls="mainNavbar" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <!-- Menu Links -->
+        <div class="collapse navbar-collapse" id="mainNavbar">
+            <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
+                <li class="nav-item"><a class="nav-link active" href="{{ url('/') }}">Home</a></li>
+                <li class="nav-item"><a class="nav-link" href="{{ route('about') }}">About Us</a></li>
+                <li class="nav-item"><a class="nav-link" href="{{ route('activity') }}">Activity</a></li>
+                <li class="nav-item"><a class="nav-link" href="{{ route('project') }}">Project</a></li>
+                <li class="nav-item"><a class="nav-link" href="{{ route('service') }}">Service</a></li>
+                <li class="nav-item"><a class="nav-link" href="{{ route('donation') }}">Donation</a></li>
+                <li class="nav-item"><a class="nav-link" href="{{ route('gallery') }}">Gallery</a></li>
+                <li class="nav-item"><a class="nav-link" href="{{ route('notice-board') }}">Notice Board</a></li>
+                <li class="nav-item"><a class="nav-link" href="{{ route('contact') }}">Contact Us</a></li>
+                <li class="nav-item"><a class="nav-link" href="#">Login</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<style>
+</style>
