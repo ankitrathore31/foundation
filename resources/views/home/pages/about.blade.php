@@ -12,7 +12,7 @@
 
                 <!-- Content -->
                 <div class="col-lg-6 col-sm-12">
-                    <small class="text-uppercase text-success d-block mb-2">Welcome to Dayaram Foundation</small>
+                    <small class="text-uppercase text-success d-block mb-2">Welcome to Dayaram Charitable Foundation</small>
 
                     <h3 class="mb-3">
                         Get the facts about <strong>safe water</strong> and how it <strong>affects</strong>
@@ -20,7 +20,7 @@
                     </h3>
 
                     <p class="text-muted">
-                        Dayaram Foundation was established in 1990 and began to operate internationally in 2010.
+                        Dayaram Charitable Foundation was established in 1990 and began to operate internationally in 2010.
                         Even today, millions of people drink dirty water. Learn how access to clean water can
                         improve health and boost local economies.
                     </p>

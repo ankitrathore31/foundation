@@ -5,8 +5,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>DAYARAM FOUNDATION</title>
+    <link rel="shortcut icon" href="{{asset('images/logo1.png')}}" type="image/x-icon">
+    <title>DAYARAM CHARITABLE FOUNDATION</title>
 
     {{-- ✅ SEO Meta Tags --}}
     <meta name="description"
@@ -19,7 +19,7 @@
     <meta property="og:title" content="EverCare - NGO & Charity Organization">
     <meta property="og:description"
         content="Support EverCare in making the world a better place. Donate, volunteer, and join our NGO initiatives.">
-    <meta property="og:image" content="{{ asset('assets/images/ngo-banner.jpg') }}">
+    <meta property="og:image" content="{{ asset('images/logo.png') }}">
     <meta property="og:url" content="{{ url()->current() }}">
     <meta property="og:type" content="website">
 
@@ -38,10 +38,6 @@
     @yield('content')
 
     @include('home.footer.footer')
-
-    {{-- ✅ Scripts --}}
-    <!-- jQuery (keep only if your scripts need it) -->
-    <script src="{{ asset('assets/scripts/jquery.min.js') }}"></script>
 
     <!-- Bootstrap 5 JS Bundle CDN -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"

@@ -50,7 +50,7 @@
     <div class="container">
         <div class="text-center mb-4">
             <h2>Donation <strong>Options</strong></h2>
-            <p class="text-muted">Choose your preferred way to donate to Dayaram Foundation.</p>
+            <p class="text-muted">Choose your preferred way to donate to Dayaram charitable Foundation.</p>
         </div>
 
         <div class="row g-4">
