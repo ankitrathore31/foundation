@@ -211,11 +211,11 @@
                     <!-- Text Content -->
                     <div class="col-lg-7 mb-4 mb-lg-0">
                         <h3>
-                            Together with <strong>Dayaram Foundation</strong>, We Strive for
+                            Together with <strong>Dayaram Charitable Foundation</strong>, We Strive for
                             <strong>Education</strong> and <strong>Healthcare</strong> for All
                         </h3>
                         <p>
-                            Dayaram Foundation is dedicated to creating opportunities for every child and family by
+                            Dayaram Charitable Foundation is dedicated to creating opportunities for every child and family by
                             providing access to quality education, healthcare, and community support. With your
                             contribution, we can bring hope and build a brighter future.
                         </p>
@@ -249,7 +249,7 @@
                         </h2>
 
                         <p class="mb-4 text-muted">
-                            Dayaram Foundation works to bring hope through education, healthcare, and community
+                            Dayaram Charitable Foundation works to bring hope through education, healthcare, and community
                             support. Together, we can create opportunities and make lasting changes in the lives
                             of underprivileged children and families.
                         </p>
@@ -422,7 +422,7 @@
                         <!-- Section Heading -->
                         <span class="text-uppercase text-muted d-block mb-2">Need Support or Have Any Questions?</span>
                         <h3 class="mb-3">
-                            Contact <strong>Dayaram Foundation</strong> Now:
+                            Contact <strong>Dayaram Charitable Foundation</strong> Now:
                             <i class="text-success">+91-9927311313</i>
                         </h3>
                         <h2 class="mb-4">Get In Touch With Us</h2>

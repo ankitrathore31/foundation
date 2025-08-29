@@ -5,12 +5,12 @@
         <div class="d-flex align-items-center">
             <!-- Logo -->
             <a href="{{ url('/') }}" title="Dayaram Foundation" class="me-5">
-                <img src="images/logo1.png" width="80" height="80" alt="Dayaram Foundation">
+                <img src="images/logo1.png" width="120" height="120" alt="Dayaram Foundation">
             </a>
 
             <!-- Title -->
             <div class="text-start">
-                <h2 class="m-0 text-danger fw-bold">DAYARAM FOUNDATION</h2>
+                <h2 class="m-0 text-danger fw-bold">DAYARAM CHARITABLE FOUNDATION</h2>
                 <h6 class="m-0 text-dark fw-bold">Empowering Communities, Changing Lives</h6>
                 <h6 class="m-0 text-primary fw-bold">Address: Jangroli Pul Pilibhit UP 262001</h6>
             </div>
@@ -31,7 +31,7 @@
 <nav class="navbar navbar-expand-md navbar-dark bg-danger">
     <div class="container">
         <!-- Brand (mobile view only if needed) -->
-        <a class="navbar-brand d-md-none fw-bold" href="{{ url('/') }}">Dayaram Foundation</a>
+        <a class="navbar-brand d-md-none fw-bold" href="{{ url('/') }}">Dayaram Charitable Foundation</a>
 
         <!-- Hamburger Menu -->
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar"
@@ -51,7 +51,7 @@
                 <li class="nav-item"><a class="nav-link" href="{{ route('gallery') }}">Gallery</a></li>
                 <li class="nav-item"><a class="nav-link" href="{{ route('notice-board') }}">Notice Board</a></li>
                 <li class="nav-item"><a class="nav-link" href="{{ route('contact') }}">Contact Us</a></li>
-                <li class="nav-item"><a class="nav-link" href="#">Login</a></li>
+                <li class="nav-item"><a class="nav-link" href="{{route('login.page')}}">Login</a></li>
             </ul>
         </div>
     </div>

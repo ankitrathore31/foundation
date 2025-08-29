@@ -10,7 +10,7 @@
           </a>
         </div>
         <p>
-          Dayaram Foundation is committed to uplifting communities through education, healthcare, 
+          Dayaram Charitable Foundation is committed to uplifting communities through education, healthcare, 
           food security, and women empowerment. Together, we can create a brighter future for those in need.
         </p>
         <a class="btn btn-outline-light btn-sm mt-2" data-bs-toggle="modal" data-bs-target="#donationModal" href="#">
@@ -75,7 +75,7 @@
 
     <!-- Footer Bottom -->
     <div class="text-center border-top border-light mt-4 pt-3 small">
-      © 2025 Dayaram Foundation. All Rights Reserved.
+      © 2025 Dayaram Charitable Foundation. All Rights Reserved.
     </div>
   </div>
 </footer>
