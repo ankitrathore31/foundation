@@ -92,7 +92,7 @@
                             {{-- <label for="session_filter" class="form-label">Select Session</label> --}}
                             <select name="session_filter" id="session_filter" class="form-control">
                                 <option value="">All Sessions</option> <!-- Default option to show all -->
-                                @foreach (Session::get('all_academic_session') as $session)
+                                @foreach ($academic_session as $session)
                                     <option value="{{ $session->session_date }}"
                                         {{ request('session_filter') == $session->session_date ? 'selected' : '' }}>
                                         {{ $session->session_date }}

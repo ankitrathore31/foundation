@@ -34,7 +34,8 @@ class ActivityController extends Controller
         $activity = $query->orderBy('program_date', 'asc')->get();
         $categories = Category::orderBy('category', 'asc')->pluck('category');
         $allProjects = Project::select('name', 'category')->get();
-        return view('ngo.activity.activitylist', compact('activity', 'categories', 'allProjects'));
+        $academic_session = academic_session::all();
+        return view('ngo.activity.activitylist', compact('activity', 'categories', 'allProjects','academic_session'));
     }
 
     public function addactivity()
