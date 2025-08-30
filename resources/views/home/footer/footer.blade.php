@@ -3,7 +3,7 @@
     <div class="row g-4">
       
       <!-- About / Donate -->
-      <div class="col-lg-3 col-md-6">
+      <div class="col-lg-8 col-md-6">
         <div class="mb-3">
           <a href="#" title="Dayaram Foundation">
             <img src="{{ asset('images/logo1.png') }}" width="80" height="80" alt="Dayaram Foundation Logo">
@@ -19,7 +19,7 @@
       </div>
 
       <!-- Contact Info -->
-      <div class="col-lg-3 col-md-6">
+      <div class="col-lg-4 col-md-6">
         <h5 class="mb-3">Contact Info</h5>
         <ul class="list-unstyled small">
           <li class="mb-2"><i class="bi bi-geo-alt"></i> Jangroli Pul, Pilibhit, UP 262001</li>
@@ -31,43 +31,6 @@
           <a href="#" class="text-light"><i class="bi bi-linkedin"></i></a>
           <a href="#" class="text-light"><i class="bi bi-twitter"></i></a>
           <a href="#" class="text-light"><i class="bi bi-youtube"></i></a>
-        </div>
-      </div>
-
-      <!-- Gallery -->
-      <div class="col-lg-6 col-md-12">
-        <h5 class="mb-3">Gallery</h5>
-        <div class="row g-2">
-          <div class="col-4">
-            <a href="images/widgets/gallery1.jpg" data-fancybox="gallery">
-              <img src="images/widgets/gallery1.jpg" class="img-fluid rounded" alt="Community Support">
-            </a>
-          </div>
-          <div class="col-4">
-            <a href="images/widgets/gallery2.jpg" data-fancybox="gallery">
-              <img src="images/widgets/gallery2.jpg" class="img-fluid rounded" alt="Education Program">
-            </a>
-          </div>
-          <div class="col-4">
-            <a href="images/widgets/gallery3.jpg" data-fancybox="gallery">
-              <img src="images/widgets/gallery3.jpg" class="img-fluid rounded" alt="Food Distribution">
-            </a>
-          </div>
-          <div class="col-4">
-            <a href="images/widgets/gallery4.jpg" data-fancybox="gallery">
-              <img src="images/widgets/gallery4.jpg" class="img-fluid rounded" alt="Healthcare Camp">
-            </a>
-          </div>
-          <div class="col-4">
-            <a href="images/widgets/gallery5.jpg" data-fancybox="gallery">
-              <img src="images/widgets/gallery5.jpg" class="img-fluid rounded" alt="Women Empowerment">
-            </a>
-          </div>
-          <div class="col-4">
-            <a href="images/widgets/gallery6.jpg" data-fancybox="gallery">
-              <img src="images/widgets/gallery6.jpg" class="img-fluid rounded" alt="Child Welfare">
-            </a>
-          </div>
         </div>
       </div>
 

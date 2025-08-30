@@ -12,7 +12,7 @@
             <img src="{{ asset('images/logo1.png') }}" alt="Logo" width="60" height="60" class="me-2">
             <div>
                 <h6 class="mb-0 fw-bold text-uppercase">DAYARAM CHARITABLE FOUNDATION</h6>
-                <small class="text-muted">JANGROLI PUL PILIBHIT UTTER- PRADESH INDIA 262001</small>
+                <small class="text-muted">JANGROLI PUL PILIBHIT UTTAR- PRADESH INDIA 262001</small>
             </div>
         </div>
 

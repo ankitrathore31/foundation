@@ -109,10 +109,10 @@
                         </a>
                         <ul class="dropdown-menu">
                             @if (!$isStaff || $user->hasPermission('add-activity'))
-                                <li><a class="dropdown-item" href="{{-- route('addactivity') --}}">Add Activity</a></li>
+                                <li><a class="dropdown-item" href="{{ route('addactivity') }}">Add Activity</a></li>
                             @endif
                             @if (!$isStaff || $user->hasPermission('activity-list'))
-                                <li><a class="dropdown-item" href="{{-- route('activitylist') --}}">Activity List</a></li>
+                                <li><a class="dropdown-item" href="{{ route('activitylist') }}">Activity List</a></li>
                             @endif
                         </ul>
                     </li>
@@ -130,14 +130,90 @@
                         </a>
                         <ul class="dropdown-menu">
                             @if (!$isStaff || $user->hasPermission('add-project'))
-                                <li><a class="dropdown-item" href="{{-- route('add.project') --}}">Add Project</a></li>
+                                <li><a class="dropdown-item" href="{{ route('add.project') }}">Add Project</a></li>
                             @endif
                             @if (!$isStaff || $user->hasPermission('project-list'))
-                                <li><a class="dropdown-item" href="{{-- route('list.project') --}}">Project List</a></li>
+                                <li><a class="dropdown-item" href="{{ route('list.project') }}">Project List</a></li>
                             @endif
                             @if (!$isStaff || $user->hasPermission('report-list'))
-                                <li><a class="dropdown-item" href="{{-- route('list.project.report') --}}">Project Report</a></li>
+                                <li><a class="dropdown-item" href="{{ route('list.project.report') }}">Project
+                                        Report</a></li>
                             @endif
+                        </ul>
+                    </li>
+                @endif
+
+                <!-- Gallery -->
+                @if (!$isStaff || $user->hasPermission('add-photos') || $user->hasPermission('gallery-list'))
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle text-white" href="#" data-bs-toggle="dropdown">
+                            <i class="fas fa-images"></i> GALLERY
+                        </a>
+                        <ul class="dropdown-menu bg-primary">
+                            @if (!$isStaff || $user->hasPermission('add-photos'))
+                                <li><a class="dropdown-item" href="{{ route('add-photos') }}">Add Photos</a></li>
+                            @endif
+                            @if (!$isStaff || $user->hasPermission('gallery-list'))
+                                <li><a class="dropdown-item" href="{{ route('gallery-list') }}">Manage Gallery</a>
+                                </li>
+                            @endif
+                        </ul>
+                    </li>
+                @endif
+
+                <!-- Notice -->
+                @if (!$isStaff || $user->hasPermission('add-notice') || $user->hasPermission('notice-list'))
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle text-white" href="#" data-bs-toggle="dropdown">
+                            <i class="fas fa-bullhorn"></i> NOTICE
+                        </a>
+                        <ul class="dropdown-menu bg-primary">
+                            @if (!$isStaff || $user->hasPermission('add-notice'))
+                                <li><a class="dropdown-item" href="{{ route('add-notice') }}">Add Notice</a></li>
+                            @endif
+                            @if (!$isStaff || $user->hasPermission('notice-list'))
+                                <li><a class="dropdown-item" href="{{ route('notice-list') }}">Notice List</a></li>
+                            @endif
+                        </ul>
+                    </li>
+                @endif
+
+                <!-- SETTING -->
+                @if (
+                    !$isStaff ||
+                        $user->hasPermission('add-working-area') ||
+                        $user->hasPermission('working-area-list') ||
+                        $user->hasPermission('signature') ||
+                        $user->hasPermission('course-list') ||
+                        $user->hasPermission('add-course-centre'))
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle text-white" href="#" data-bs-toggle="dropdown">
+                            <i class="fas fa-cogs"></i> SETTING
+                        </a>
+                        <ul class="dropdown-menu bg-primary">
+                            @if (!$isStaff || $user->hasPermission('add-working-area'))
+                                <li><a class="dropdown-item" href="{{-- route('working-area') --}}">Add Working Area</a>
+                                </li>
+                            @endif
+                            @if (!$isStaff || $user->hasPermission('working-area-list'))
+                                <li><a class="dropdown-item" href="{{-- route('working-area-list') --}}">Working Area
+                                        List</a></li>
+                            @endif
+                            @if (!$isStaff || $user->hasPermission('signature'))
+                                <li><a class="dropdown-item" href="{{ route('signature') }}">Signature</a></li>
+                            @endif
+                            <li><a class="dropdown-item" href="{{ route('add-session') }}">Add Session</a></li>
+                            <li><a class="dropdown-item" href="{{ route('session-list') }}">Session List</a></li>
+                            <li><a class="dropdown-item" href="{{ route('category.list') }}">Work Category</a></li>
+                            @if (!$isStaff || $user->hasPermission('add-course-centre'))
+                                <li><a class="dropdown-item" href="{{-- route('add.course') --}}">Add Course For Training
+                                        Centre</a>
+                                </li>
+                            @endif
+                            @if (!$isStaff || $user->hasPermission('course-list'))
+                                <li><a class="dropdown-item" href="{{-- route('list.course') --}}">Course List</a></li>
+                            @endif
+                            <li><a class="dropdown-item" href="{{-- route('email.list') --}}">Emails</a></li>
                         </ul>
                     </li>
                 @endif

@@ -174,7 +174,7 @@
                                         <i class="fas fa-running fa-2x me-3"></i>
                                         <div>
                                             <p class="mb-1">Today's Activities</p>
-                                            <h5 class="mb-0">{{-- $todayacti --}}</h5>
+                                            <h5 class="mb-0">{{todayActivities()}}</h5>
                                         </div>
                                     </div>
                                 </div>
@@ -186,7 +186,7 @@
                                         <i class="fas fa-clipboard-list fa-2x me-3"></i>
                                         <div>
                                             <p class="mb-1">Total Activities</p>
-                                            <h5 class="mb-0">{{-- $allacti --}}</h5>
+                                            <h5 class="mb-0">{{totalActivities()}}</h5>
                                         </div>
                                     </div>
                                 </div>
