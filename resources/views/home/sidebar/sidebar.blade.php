@@ -48,7 +48,7 @@
                 <li class="nav-item"><a class="nav-link" href="{{ route('project') }}">Project</a></li>
                 <li class="nav-item"><a class="nav-link" href="{{ route('service') }}">Service</a></li>
                 <li class="nav-item"><a class="nav-link" href="{{ route('donation') }}">Donation</a></li>
-                <li class="nav-item"><a class="nav-link" href="{{ route('gallery') }}">Gallery</a></li>
+                <li class="nav-item"><a class="nav-link" href="{{ route('gallery.page') }}">Gallery</a></li>
                 <li class="nav-item"><a class="nav-link" href="{{ route('notice-board') }}">Notice Board</a></li>
                 <li class="nav-item"><a class="nav-link" href="{{ route('contact') }}">Contact Us</a></li>
                 <li class="nav-item"><a class="nav-link" href="{{route('login.page')}}">Login</a></li>

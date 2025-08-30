@@ -3,7 +3,7 @@
 <div class="main-content">
     <div class="container my-5">
         <div class="card mx-auto shadow-sm" style="max-width: 600px;">
-            <div class="card-header bg-primary text-white">
+            <div class="card-header bg-warning text-white">
                 <h5 class="mb-0">Change Password</h5>
             </div>
 
