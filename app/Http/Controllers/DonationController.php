@@ -65,8 +65,10 @@ class DonationController extends Controller
         $lastOnlineReceipt = Donation::selectRaw(
             "MAX(CAST(SUBSTRING(Onlinereceipt_no, 6) AS UNSIGNED)) as max_no"
         )->value('max_no');
-        $newOnlineReceiptNo = $lastOnlineReceipt ? ($lastOnlineReceipt + 1) : 360;
-        $formattedOnlineReceiptNo = '219DR' . str_pad($newOnlineReceiptNo, 7, '0', STR_PAD_LEFT);
+
+        $newOnlineReceiptNo = $lastOnlineReceipt ? ($lastOnlineReceipt + 1) : 1;
+        $formattedOnlineReceiptNo = 'DCFDR' . str_pad($newOnlineReceiptNo, 7, '0', STR_PAD_LEFT);
+
         $signatures = Signature::pluck('file_path', 'role');
 
         return view('ngo.donation.donation', compact('data', 'record', 'newReceiptNo', 'category', 'formattedOnlineReceiptNo', 'signatures'));
@@ -87,8 +89,9 @@ class DonationController extends Controller
             'amount' => 'required|numeric',
             'payment_method' => 'required',
         ]);
-
         $lastReceipt = \App\Models\Donation::orderBy('id', 'desc')->first();
+
+        // --- Offline Receipt ---
         if ($lastReceipt && is_numeric($lastReceipt->receipt_no)) {
             $newReceiptNo = (int)$lastReceipt->receipt_no + 1;
         } else {
@@ -96,18 +99,18 @@ class DonationController extends Controller
         }
         $formattedReceiptNo = str_pad($newReceiptNo, 3, '0', STR_PAD_LEFT);
 
+        // --- Online Receipt ---
         $lastOnlineReceipt = \App\Models\Donation::orderBy('id', 'desc')->first();
 
-        if ($lastOnlineReceipt && preg_match('/(\d+DR)(\d+)/', $lastOnlineReceipt->Onlinereceipt_no, $matches)) {
-            $prefix = $matches[1];
-            $lastNumber = (int)$matches[2]; // e.g. 360
+        if ($lastOnlineReceipt && preg_match('/DCFDR(\d+)/', $lastOnlineReceipt->Onlinereceipt_no, $matches)) {
+            $lastNumber = (int)$matches[1]; // extract the numeric part
             $newNumber = $lastNumber + 1;
         } else {
-            $prefix = '219DR';
-            $newNumber = 360;
+            $newNumber = 1; // start from 1 if none exists
         }
 
-        $formattedOnlineReceiptNo = $prefix . str_pad($newNumber, 7, '0', STR_PAD_LEFT);
+        $formattedOnlineReceiptNo = 'DCFDR' . str_pad($newNumber, 7, '0', STR_PAD_LEFT);
+
 
 
         $donation = new Donation;

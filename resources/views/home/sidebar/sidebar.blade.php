@@ -18,17 +18,17 @@
 </style>
 <header class="bg-light border-bottom">
     <div class="container py-2">
-        <div class="row align-items-center">
+        <div class="row">
 
             <!-- Logo -->
-            <div class="col-md-2 text-center text-md-start mb-2 mb-md-0">
+            <div class="col-md-2 text-start text-md-start mb-2 mb-md-0">
                 <a href="{{ url('/') }}" title="Dayaram Foundation">
-                    <img src="{{ asset('images/logo1.png') }}" width="120" height="120" alt="Dayaram Foundation">
+                    <img src="{{ asset('images/logo1.png') }}" width="100" height="100" alt="Dayaram Foundation">
                 </a>
             </div>
 
             <!-- Title Section -->
-            <div class="col-md-8 text-center text-md-start">
+            <div class="col-md-8 text-start text-md-start">
                 <h2 class="m-0 text-danger fw-bold ngo-title">
                     DAYARAM CHARITABLE FOUNDATION
                 </h2>
@@ -37,7 +37,7 @@
             </div>
 
             <!-- Donate Button -->
-            <div class="col-md-2 text-center text-md-end mt-3 mt-md-0">
+            <div class="col-md-2 text-end text-md-end mt-3 mt-md-0">
                 <a class="btn btn-success fw-bold px-4" href="{{ route('donation') }}">
                     Donate Now
                 </a>
