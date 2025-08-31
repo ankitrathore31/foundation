@@ -64,7 +64,7 @@
                                     <i class="fas fa-user-plus fa-2x me-3"></i>
                                     <div>
                                         <p class="mb-1">Total Registration</p>
-                                        <h5 class="mb-0">{{-- totalReg() --}}</h5>
+                                        <h5 class="mb-0">{{total_registered()}}</h5>
                                     </div>
                                 </div>
                             </div>
@@ -75,7 +75,7 @@
                                     <i class="fas fa-clock fa-2x me-3"></i>
                                     <div>
                                         <p class="mb-1">Pending Registration</p>
-                                        <h5 class="mb-0">{{-- totalPendingReg() --}}</h5>
+                                        <h5 class="mb-0">{{total_pending()}}</h5>
                                     </div>
                                 </div>
                             </div>
@@ -87,7 +87,7 @@
                                     <i class="fas fa-check-circle fa-2x me-3"></i>
                                     <div>
                                         <p class="mb-1">Approved Registration</p>
-                                        <h5 class="mb-0">{{-- totalApprovedReg() --}}</h5>
+                                        <h5 class="mb-0">{{total_approved()}}</h5>
                                     </div>
                                 </div>
                             </div>
@@ -99,7 +99,7 @@
                                     <i class="fas fa-times-circle fa-2x me-3"></i>
                                     <div>
                                         <p class="mb-1">Rejected Registration</p>
-                                        <h5 class="mb-0">{{-- totalRejectedReg() --}}</h5>
+                                        <h5 class="mb-0">{{total_deleted()}}</h5>
                                     </div>
                                 </div>
                             </div>
@@ -210,7 +210,7 @@
                                     <i class="fas fa-users fa-2x me-3"></i>
                                     <div>
                                         <p class="mb-1">Total Members</p>
-                                        <h5 class="mb-0">{{-- $allmem --}}</h5>
+                                        <h5 class="mb-0">{{totalMember()}}</h5>
                                     </div>
                                 </div>
                             </div>
@@ -222,7 +222,7 @@
                                     <i class="fas fa-check-circle fa-2x me-3"></i>
                                     <div>
                                         <p class="mb-1">Active Members</p>
-                                        <h5 class="mb-0">{{-- $appmem --}}</h5>
+                                        <h5 class="mb-0">{{totalActiveMember()}}</h5>
                                     </div>
                                 </div>
                             </div>
@@ -234,7 +234,7 @@
                                     <i class="fas fa-times-circle fa-2x me-3"></i>
                                     <div>
                                         <p class="mb-1">Inactive Members</p>
-                                        <h5 class="mb-0">{{-- $penmem --}}</h5>
+                                        <h5 class="mb-0">{{totalPendingMember()}}</h5>
                                     </div>
                                 </div>
                             </div>
@@ -258,7 +258,7 @@
                                         <i class="fas fa-hand-holding-usd fa-2x me-3"></i>
                                         <div>
                                             <p class="mb-1">Today's Donation</p>
-                                            <h5 class="mb-0">₹ {{-- number_format($todaydonate, 2) --}}</h5>
+                                            <h5 class="mb-0">₹ {{donation_today()}}</h5>
                                         </div>
                                     </div>
                                 </div>
@@ -271,7 +271,7 @@
                                         <i class="fas fa-donate fa-2x me-3"></i>
                                         <div>
                                             <p class="mb-1">Total Online Donation</p>
-                                            <h5 class="mb-0">₹ {{-- number_format($succdonate, 2) --}}</h5>
+                                            <h5 class="mb-0">₹ {{Onlinedonation_total()}}</h5>
                                         </div>
                                     </div>
                                 </div>
@@ -284,7 +284,7 @@
                                         <i class="fas fa-donate fa-2x me-3"></i>
                                         <div>
                                             <p class="mb-1">Total Offline Donation</p>
-                                            <h5 class="mb-0">₹ {{-- number_format($offlinedonate,2) --}}</h5>
+                                            <h5 class="mb-0">₹ {{Offlinedonation_total()}}</h5>
                                         </div>
                                     </div>
                                 </div>
@@ -297,7 +297,7 @@
                                         <i class="fas fa-hand-holding-usd fa-2x me-3"></i>
                                         <div>
                                             <p class="mb-1">Total Donation</p>
-                                            <h5 class="mb-0">₹ {{-- number_format($totaldonation, 2) --}}</h5>
+                                            <h5 class="mb-0">₹ {{donation_total()}}</h5>
                                         </div>
                                     </div>
                                 </div>
