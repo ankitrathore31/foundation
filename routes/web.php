@@ -3,14 +3,18 @@
 use App\Http\Controllers\ActivityController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\DonationController;
 use App\Http\Controllers\GalleryController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\MemberController;
 use App\Http\Controllers\NgoController;
 use App\Http\Controllers\NoticeController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ProjectController;
+use App\Http\Controllers\RegistrationController;
 use App\Http\Controllers\SessionController;
 use App\Http\Controllers\SignatureController;
+use App\Http\Controllers\WorkingAreaController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -23,7 +27,7 @@ Route::controller(HomeController::class)->group(function () {
     Route::get('/project', 'Project')->name('project');
     Route::get('/activty', 'Activity')->name('activity');
     Route::get('/contact', 'Contact')->name('contact');
-    Route::get('/donation', 'Donation')->name('donation');
+    Route::get('/donation', 'Donation')->name('donation.page');
     Route::get('/notice-board', 'NoticeBoard')->name('notice-board');
 });
 Route::get('/gallery-page', [HomeController::class, 'gallery'])->name('gallery.page');
@@ -45,11 +49,12 @@ Route::controller(NgoController::class)->middleware('auth')->group(function () {
 });
 
 Route::controller(ProfileController::class)->group(function () {
-    Route::get('admin/profile', 'Profile')->middleware('auth')->name('profile');
-    Route::get('admin/edit-profile', 'EditProfile')->middleware('auth')->name('profile.edit');
-    Route::post('admin/update-profile', 'UpdateProfile')->middleware('auth')->name('profile.update');
-    Route::get('admin/change-pass', 'ChangePassword')->Middleware('auth')->name('change.pass.show');
-    Route::post('admin/update-pass', 'UpdatePass')->middleware('auth')->name('password.change');
+    Route::get('ngo/profile', 'Profile')->middleware('auth')->name('profile');
+    Route::post('ngo/store-profile', 'StoreProfile')->middleware('auth')->name('profile.store');
+    Route::get('ngo/edit-profile', 'EditProfile')->middleware('auth')->name('edit.profile');
+    Route::post('ngo/update-profile', 'UpdateProfile')->middleware('auth')->name('profile.update');
+    Route::get('ngo/change-pass', 'ChangePassword')->Middleware('auth')->name('change.pass.show');
+    Route::post('ngo/update-pass', 'UpdatePass')->middleware('auth')->name('password.change');
 });
 
 Route::controller(SessionController::class)->group(function () {
@@ -99,6 +104,22 @@ Route::controller(ProjectController::class)->group(function () {
     Route::get('ngo/project-list-report', 'ProjectReportList')->middleware('auth')->name('list.project.report');
 });
 
+Route::controller(DonationController::class)->group(function () {
+    Route::get('ngo/online-donor-list', 'onlineDonor')->middleware('auth')->name('online-donor-list');
+    Route::get('ngo/donation-list', 'donationList')->middleware('auth')->name('donation-list');
+    Route::get('ngo/donation', 'donation')->middleware('auth')->name('donation');
+    Route::post('ngo/save-donation', 'saveDonation')->middleware('auth')->name('save-donation');
+    Route::get('ngo/edit-donation/{id}', 'EditDonation')->middleware('auth')->name('edit-donation');
+    Route::post('ngo/update-donation/{id}', 'updateDonation')->middleware('auth')->name('update-donation');
+    Route::get('ngo/delete-donation/{id}', 'deleteDonation')->middleware('auth')->name('delete-donation');
+    Route::get('ngo/view-donation/{id}', 'viewDonation')->middleware('auth')->name('view-donation');
+    Route::get('ngo/donation-card/{id}', 'viewDonationCard')->middleware('auth')->name('view-donation-card');
+    Route::get('ngo/donation-certificate/{id}', 'viewDonationCertificate')->middleware('auth')->name('certi-donation');
+    Route::get('ngo/donation-card-list', 'donationCardList')->middleware('auth')->name('donation-card-list');
+    Route::get('ngo/all-donor-list', 'allDonations')->middleware('auth')->name('all-donor-list');
+    Route::get('ngo/dontaion-report', 'DonationReport')->middleware('auth')->name('dontaion-report');
+});
+
 Route::controller(SignatureController::class)->group(function () {
     Route::get('ngo/signature', 'addSignature')->middleware('auth')->name('signature');
     Route::post('ngo/save-signature', 'saveSignature')->middleware('auth')->name('save-signature');
@@ -120,4 +141,49 @@ Route::controller(NoticeController::class)->group(function () {
     Route::post('ngo/update-notice/{id}', 'updateNotice')->middleware('auth')->name('update-notice');
     Route::get('ngo/delete-notice/{id}', 'deleteNotice')->middleware('auth')->name('delete-notice');
     Route::get('ngo/notice-status/{id}', 'NoticeStatus')->middleware('auth')->name('notice-status');
+});
+
+Route::middleware('auth')->group(function () {
+    Route::get('ngo/registration', [RegistrationController::class, 'registration'])->name('registration');
+    Route::post('ngo/store-registration', [RegistrationController::class, 'StoreRegistration'])->name('store-registration');
+    Route::post('ngo/update-registration/{id}', [RegistrationController::class, 'UpdateRegistration'])->name('update-registration');
+    Route::get('ngo/pending-registration', [RegistrationController::class, 'pendingRegistration'])->name('pending-registration');
+    Route::patch('ngo/approve-status/{type}/{id}', [RegistrationController::class, 'approveStatus'])->name('approve-status');
+    Route::get('ngo/approve-registration', [RegistrationController::class, 'approveRegistration'])->name('approve-registration');
+    Route::get('ngo/show-apporve-registration/{id}/{type}', [RegistrationController::class, 'showApporveReg'])->name('show-apporve-reg');
+    Route::patch('ngo/pending-status/{type}/{id}', [RegistrationController::class, 'pendingStatus'])->name('pending-status');
+    Route::get('ngo/view-registration/{id}/{type}', [RegistrationController::class, 'viewRegistration'])->name('view-reg');
+    Route::get('ngo/delete-view/{id}/{type}', [RegistrationController::class, 'deleteRegistrationPage'])->name('delete-view');
+    Route::post('ngo/delete-registration/{id}/{type}', [RegistrationController::class, 'deleteRegistration'])->name('delete-reg');
+    Route::get('ngo/recover-registration', [RegistrationController::class, 'recover'])->name('recover');
+    Route::get('ngo/recover/{id}/{type}', [RegistrationController::class, 'recoverItem'])->name('recover-item');
+    Route::get('ngo/online-registration-setting', [RegistrationController::class, 'onlineregistrationSetting'])->name('reg-setting');
+    Route::post('ngo/registration-toggle', [RegistrationController::class, 'toggleSetting'])->name('registration.toggle');
+    Route::get('ngo/edit-registration/{id}/{type}', [RegistrationController::class, 'editRegistration'])->name('edit-reg');
+    Route::get('ngo/edit-apporve-registration/{id}/{type}', [RegistrationController::class, 'editApproveRegistration'])->name('edit-apporve-reg');
+    Route::post('ngo/update-apporve-registration/{id}', [RegistrationController::class, 'UpdateApporveRegistration'])->name('update-apporve-registration');
+});
+
+Route::controller(MemberController::class)->group(function () {
+    Route::get('ngo/member-list', 'memberList')->middleware('auth')->name('member-list');
+    Route::get('ngo/add-member-list', 'addmemberlist')->middleware('auth')->name('add-member-list');
+    Route::get('ngo/view-member/{id}', 'showMember')->middleware('auth')->name('view-member');
+    Route::post('ngo/save-position',  'savePosition')->middleware('auth')->name('save-member-position');
+    Route::get('ngo/member-position-list', 'memberPostionlist')->middleware('auth')->name('member-position-list');
+    Route::get('ngo/show-member/{id}', 'showMemberPosition')->middleware('auth')->name('show-member');
+    Route::get('ngo/member-certificate/{id}', 'MemberCerti')->middleware('auth')->name('member-certi');
+    Route::get('ngo/member-letter/{id}', 'MemberLetter')->middleware('auth')->name('member-letter');
+    Route::get('ngo/member-activity-list', 'Memberactivitylist')->middleware('auth')->name('member-activitylist');
+    Route::get('ngo/add-member-activity', 'addmemberactivity')->middleware('auth')->name('add-memberactivity');
+    Route::post('ngo/save-member-activity',  'saveMemberactivity')->middleware('auth')->name('save-memberactivity');
+    Route::get('ngo/activity-certificate/{id}/{category}', 'MemberActivityCerti')->middleware('auth')->name('member-activity-certi');
+});
+
+Route::controller(WorkingAreaController::class)->group(function () {
+    Route::get('ngo/working-area', 'workingarea')->middleware('auth')->name('working-area');
+    Route::post('ngo/store-area', 'storeArea')->middleware('auth')->name('store-area');
+    Route::get('ngo/working-area-list', 'workingAreaList')->middleware('auth')->name('working-area-list');
+    Route::get('ngo/edit-area/{id}', 'editarea')->middleware('auth')->name('edit-area');
+    Route::post('ngo/update-area/{id}', 'updatearea')->middleware('auth')->name('update-area');
+    Route::get('ngo/delete-Working-area/{id}', 'removeArea')->middleware('auth')->name('remove-area');
 });

@@ -143,6 +143,124 @@
                     </li>
                 @endif
 
+                <!-- Registration -->
+                @if (
+                    !$isStaff ||
+                        $user->hasPermission('new-registration') ||
+                        $user->hasPermission('pending-registration') ||
+                        $user->hasPermission('approve-registration') ||
+                        $user->hasPermission('recover-registration') ||
+                        $user->hasPermission('reg-setting'))
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle text-white" href="#" data-bs-toggle="dropdown">
+                            <i class="fas fa-clipboard-list"></i> REGISTRATION
+                        </a>
+                        <ul class="dropdown-menu bg-primary">
+                            @if (!$isStaff || $user->hasPermission('new-registration'))
+                                <li><a class="dropdown-item" href="{{ route('registration') }}">New Registration</a>
+                                </li>
+                            @endif
+                            @if (!$isStaff || $user->hasPermission('pending-registration'))
+                                <li><a class="dropdown-item" href="{{ route('pending-registration') }}">Pending
+                                        Registration</a></li>
+                            @endif
+                            @if (!$isStaff || $user->hasPermission('approve-registration'))
+                                <li><a class="dropdown-item" href="{{ route('approve-registration') }}">Approve
+                                        Registration</a></li>
+                            @endif
+                            @if (!$isStaff || $user->hasPermission('recover-registration'))
+                                <li><a class="dropdown-item" href="{{ route('recover') }}">Deleted Registration</a>
+                                </li>
+                            @endif
+                            {{-- @if (!$isStaff || $user->hasPermission('reg-setting'))
+                                <li><a class="dropdown-item" href="{{ route('reg-setting') }}">Online Registration
+                                        Setting</a></li>
+                            @endif --}}
+                        </ul>
+                    </li>
+                @endif
+
+                <!-- Membership -->
+                @if (
+                    !$isStaff ||
+                        $user->hasPermission('member-list') ||
+                        $user->hasPermission('add-member-position') ||
+                        $user->hasPermission('member-position-list') ||
+                        $user->hasPermission('member-activity') ||
+                        $user->hasPermission('active-members') ||
+                        $user->hasPermission('inactive-members'))
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle text-white" href="#" data-bs-toggle="dropdown">
+                            <i class="fas fa-user-friends"></i> MEMBERSHIP
+                        </a>
+                        <ul class="dropdown-menu bg-primary">
+                            @if (!$isStaff || $user->hasPermission('member-list'))
+                                <li><a class="dropdown-item" href="{{ route('member-list') }}">Member List</a></li>
+                            @endif
+                            @if (!$isStaff || $user->hasPermission('add-member-position'))
+                                <li><a class="dropdown-item" href="{{ route('add-member-list') }}">Add Member
+                                        Position</a></li>
+                            @endif
+                            @if (!$isStaff || $user->hasPermission('member-position-list'))
+                                <li><a class="dropdown-item" href="{{ route('member-position-list') }}">Member
+                                        Position List</a></li>
+                            @endif
+                            @if (!$isStaff || $user->hasPermission('member-activity'))
+                                <li><a class="dropdown-item" href="{{ route('member-activitylist') }}">Member
+                                        Activity</a></li>
+                            @endif
+                            {{-- @if (!$isStaff || $user->hasPermission('active-members'))
+                                <li><a class="dropdown-item" href="#">Active Members</a></li>
+                            @endif
+                            @if (!$isStaff || $user->hasPermission('inactive-members'))
+                                <li><a class="dropdown-item" href="#">Unactive Members</a></li>
+                            @endif --}}
+                        </ul>
+                    </li>
+                @endif
+
+                <!-- Donation -->
+                @if (
+                    !$isStaff ||
+                        $user->hasPermission('donation') ||
+                        $user->hasPermission('donation-list') ||
+                        $user->hasPermission('online-donor-list') ||
+                        $user->hasPermission('donation-card-list') ||
+                        $user->hasPermission('all-donor-list') ||
+                        $user->hasPermission('donation-report'))
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle text-white" href="#" data-bs-toggle="dropdown"><i
+                                class="fas fa-donate"></i> DONATION</a>
+                        <ul class="dropdown-menu bg-primary">
+                            @if (!$isStaff || $user->hasPermission('donation'))
+                                <li><a class="dropdown-item" href="{{ route('donation') }}">Deposite Donations</a>
+                                </li>
+                            @endif
+                            @if (!$isStaff || $user->hasPermission('donation-list'))
+                                <li><a class="dropdown-item" href="{{ route('donation-list') }}">Donations List</a>
+                                </li>
+                            @endif
+                            {{-- @if (!$isStaff || $user->hasPermission('online-donor-list'))
+                                <li><a class="dropdown-item" href="{{ route('online-donor-list') }}">Online Donations
+                                        List</a>
+                                </li>
+                            @endif --}}
+                            {{-- @if (!$isStaff || $user->hasPermission('donation-card-list'))
+                                <li><a class="dropdown-item" href="{{ route('donation-card-list') }}">Donation
+                                        Card</a></li>
+                            @endif --}}
+                            @if (!$isStaff || $user->hasPermission('all-donor-list'))
+                                <li><a href="{{ route('all-donor-list') }}" class="dropdown-item">All Donation
+                                        List</a></li>
+                            @endif
+                            @if (!$isStaff || $user->hasPermission('donation-report'))
+                                <li><a class="dropdown-item" href="{{ route('dontaion-report') }}">Donations
+                                        Report</a></li>
+                            @endif
+                        </ul>
+                    </li>
+                @endif
+
                 <!-- Gallery -->
                 @if (!$isStaff || $user->hasPermission('add-photos') || $user->hasPermission('gallery-list'))
                     <li class="nav-item dropdown">
@@ -192,11 +310,11 @@
                         </a>
                         <ul class="dropdown-menu bg-primary">
                             @if (!$isStaff || $user->hasPermission('add-working-area'))
-                                <li><a class="dropdown-item" href="{{-- route('working-area') --}}">Add Working Area</a>
+                                <li><a class="dropdown-item" href="{{ route('working-area') }}">Add Working Area</a>
                                 </li>
                             @endif
                             @if (!$isStaff || $user->hasPermission('working-area-list'))
-                                <li><a class="dropdown-item" href="{{-- route('working-area-list') --}}">Working Area
+                                <li><a class="dropdown-item" href="{{ route('working-area-list') }}">Working Area
                                         List</a></li>
                             @endif
                             @if (!$isStaff || $user->hasPermission('signature'))

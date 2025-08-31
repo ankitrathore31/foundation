@@ -1,24 +1,49 @@
-@extends('Admin.layout.master')
+@extends('ngo.layout.master')
 @section('content')
-    <div class="main-content">
-        <div class="container my-5">
-            <div class="card shadow-sm border-0 mx-auto" style="max-width: 600px;">
-                <div class="card-header bg-primary text-white d-flex justify-content-between align-items-center">
-                    <h5 class="mb-0">User Profile</h5>
-                    <a href="{{ route('profile.edit') }}" class="btn btn-light btn-sm">Edit</a>
-                </div>
-                <div class="card-body">
-                    <div class="mb-3">
-                        <label class="form-label fw-bold text-muted">Name</label>
-                        <div>{{ $user->name }}</div>
-                    </div>
-                    <div class="mb-3">
-                        <label class="form-label fw-bold text-muted">Email</label>
-                        <div>{{ $user->email }}</div>
-                    </div>
-                </div>
+<div class="container my-5">
+    <div class="card p-4">
+        <form action="{{ $ngo ? route('profile.update', $ngo->id) : route('profile.store') }}" method="POST" enctype="multipart/form-data">
+            @csrf
+            <div class="mb-3">
+                <label>Title</label>
+                <input type="text" name="title" class="form-control" value="{{ old('title', $ngo->title ?? '') }}" required>
             </div>
-        </div>
 
+            <div class="mb-3">
+                <label>Sub Title</label>
+                <input type="text" name="sub_title" class="form-control" value="{{ old('sub_title', $ngo->sub_title ?? '') }}">
+            </div>
+
+            <div class="mb-3">
+                <label>Phone</label>
+                <input type="text" name="phone" class="form-control" value="{{ old('phone', $ngo->phone ?? '') }}">
+            </div>
+
+            <div class="mb-3">
+                <label>Email</label>
+                <input type="email" name="email" class="form-control" value="{{ old('email', $ngo->email ?? '') }}">
+            </div>
+
+            <div class="mb-3">
+                <label>Address</label>
+                <textarea name="address" class="form-control">{{ old('address', $ngo->address ?? '') }}</textarea>
+            </div>
+
+            <div class="mb-3">
+                <label>Website</label>
+                <input type="url" name="website" class="form-control" value="{{ old('website', $ngo->website ?? '') }}">
+            </div>
+
+            <div class="mb-3">
+                <label>Logo</label>
+                <input type="file" name="logo" class="form-control">
+                @if(!empty($ngo->logo))
+                    <img src="{{ asset($ngo->logo) }}" alt="Logo" height="80" class="mt-2">
+                @endif
+            </div>
+
+            <button class="btn btn-success">{{ $ngo ? 'Update' : 'Save' }}</button>
+        </form>
     </div>
+</div>
 @endsection
