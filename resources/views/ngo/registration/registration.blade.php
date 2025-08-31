@@ -265,54 +265,6 @@
                                         @enderror
                                     </div>
                                 </div>
-                                <div class="col-md-6 form-group mb-3">
-                                    <label for="village" class="form-label">Village/Locality: <span
-                                            class="text-danger">*</span></label>
-                                    <input type="text" name="village" id="village"
-                                        class="form-control @error('village') is-invalid @enderror"
-                                        value="{{ old('village') }}">
-                                    @error('village')
-                                        <span class="text-danger">{{ $message }}</span>
-                                    @enderror
-                                </div>
-
-                                <div class="col-md-6 form-group mb-3">
-                                    <label for="post" class="form-label">Post/Town: <span
-                                            class="text-danger">*</span></label>
-                                    <input type="text" name="post" id="post"
-                                        class="form-control @error('post') is-invalid @enderror"
-                                        value="{{ old('post') }}" required>
-                                    @error('post')
-                                        <span class="text-danger">{{ $message }}</span>
-                                    @enderror
-                                </div>
-
-                                <div class="col-md-6 form-group mb-3">
-                                    <label for="area_type" class="form-label">Area Type: <span
-                                            class="text-danger">*</span></label>
-                                    <select name="area_type" class="form-control" id="area_type" required>
-                                        <option value="" selected disabled>Select Area</option>
-                                        <option value="Rular" {{ old('area_type') == 'Rular' ? 'selected' : '' }}>
-                                            Rular
-                                        </option>
-                                        <option value="Urban" {{ old('area_type') == 'Urban' ? 'selected' : '' }}>
-                                            Urban
-                                        </option>
-                                    </select>
-                                    @error('area_type')
-                                        <span class="text-danger">{{ $message }}</span>
-                                    @enderror
-                                </div>
-                                <div class="col-md-6 form-group mb-3">
-                                    <label for="block" class="form-label">Block: <span
-                                            class="text-danger">*</span></label>
-                                    <input type="text" name="block" id="block"
-                                        class="form-control @error('block') is-invalid @enderror"
-                                        value="{{ old('block') }}" required>
-                                    @error('block')
-                                        <span class="text-danger">{{ $message }}</span>
-                                    @enderror
-                                </div>
                                 @php
                                     $districtsByState = config('districts');
                                 @endphp
@@ -345,6 +297,54 @@
                                         <span class="text-danger">{{ $message }}</span>
                                     @enderror
                                 </div>
+                                <div class="col-md-6 form-group mb-3">
+                                    <label for="area_type" class="form-label">Area Type: <span
+                                            class="text-danger">*</span></label>
+                                    <select name="area_type" class="form-control" id="area_type" required>
+                                        <option value="" selected disabled>Select Area</option>
+                                        <option value="Rular" {{ old('area_type') == 'Rular' ? 'selected' : '' }}>
+                                            Rular
+                                        </option>
+                                        <option value="Urban" {{ old('area_type') == 'Urban' ? 'selected' : '' }}>
+                                            Urban
+                                        </option>
+                                    </select>
+                                    @error('area_type')
+                                        <span class="text-danger">{{ $message }}</span>
+                                    @enderror
+                                </div>
+
+
+                                <div class="col-md-6 form-group mb-3">
+                                    <label for="block" class="form-label">Block/Town: <span
+                                            class="text-danger">*</span></label>
+                                    <input type="text" name="block" id="block"
+                                        class="form-control @error('block') is-invalid @enderror"
+                                        value="{{ old('block') }}" required>
+                                    @error('block')
+                                        <span class="text-danger">{{ $message }}</span>
+                                    @enderror
+                                </div>
+                                <div class="col-md-6 form-group mb-3">
+                                    <label for="post" class="form-label">Post: <span
+                                            class="text-danger">*</span></label>
+                                    <input type="text" name="post" id="post"
+                                        class="form-control @error('post') is-invalid @enderror"
+                                        value="{{ old('post') }}" required>
+                                    @error('post')
+                                        <span class="text-danger">{{ $message }}</span>
+                                    @enderror
+                                </div>
+                                <div class="col-md-6 form-group mb-3">
+                                    <label for="village" class="form-label">Village/Locality: <span
+                                            class="text-danger">*</span></label>
+                                    <input type="text" name="village" id="village"
+                                        class="form-control @error('village') is-invalid @enderror"
+                                        value="{{ old('village') }}">
+                                    @error('village')
+                                        <span class="text-danger">{{ $message }}</span>
+                                    @enderror
+                                </div>
 
                                 <div class="col-md-6 form-group mb-3">
                                     <label for="pincode" class="form-label">Pincode: <span
@@ -370,16 +370,6 @@
                                     @enderror
                                 </div>
 
-                                <div class="col-md-6 col-sm-6 col-sm-12 form-group mb-3">
-                                    <label for="email" class="form-label">Email:</label>
-                                    <input type="email" name="email" id="email"
-                                        class="form-control @error('email') is-invalid @enderror"
-                                        value="{{ old('email') }}">
-                                    @error('email')
-                                        <span class="text-danger">{{ $message }}</span>
-                                    @enderror
-                                </div>
-
                                 <div class="col-md-6 col-sm-6  form-group mb-3">
                                     <label for="phone" class="form-label">Phone: <span
                                             class="text-danger">*</span></label>
@@ -390,6 +380,17 @@
                                         <span class="text-danger">{{ $message }}</span>
                                     @enderror
                                 </div>
+
+                                <div class="col-md-6 col-sm-6 col-sm-12 form-group mb-3">
+                                    <label for="email" class="form-label">Email:</label>
+                                    <input type="email" name="email" id="email"
+                                        class="form-control @error('email') is-invalid @enderror"
+                                        value="{{ old('email') }}">
+                                    @error('email')
+                                        <span class="text-danger">{{ $message }}</span>
+                                    @enderror
+                                </div>
+
 
                                 <div class="col-md-6 col-sm-6 form-group mb-3">
                                     <label for="dob" class="form-label">Date of Birth: <span
@@ -585,7 +586,8 @@
                         <div class="row">
                             <div class="col-md-6 mb-3">
                                 <div class="form-group text-center">
-                                    <button type="submit" name="submit" class="btn btn-success w-50">Registration</button>
+                                    <button type="submit" name="submit"
+                                        class="btn btn-success w-50">Registration</button>
                                 </div>
                             </div>
                         </div>
