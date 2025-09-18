@@ -3,6 +3,7 @@
 use App\Http\Controllers\ActivityController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\BeneficiareController;
 use App\Http\Controllers\DonationController;
 use App\Http\Controllers\GalleryController;
 use App\Http\Controllers\HomeController;
@@ -177,6 +178,34 @@ Route::controller(MemberController::class)->group(function () {
     Route::get('ngo/add-member-activity', 'addmemberactivity')->middleware('auth')->name('add-memberactivity');
     Route::post('ngo/save-member-activity',  'saveMemberactivity')->middleware('auth')->name('save-memberactivity');
     Route::get('ngo/activity-certificate/{id}/{category}', 'MemberActivityCerti')->middleware('auth')->name('member-activity-certi');
+});
+
+Route::controller(BeneficiareController::class)->group(function () {
+    Route::get('ngo/add-beneficiarie-list', 'AddbeneficiarieList')->middleware('auth')->name('beneficiarie-add-list');
+    Route::get('ngo/view-beneficiarie/{id}', 'viewbeneficiarie')->middleware('auth')->name('view-beneficiarie');
+    Route::get('ngo/add-beneficiarie/{id}', 'addSurvey')->middleware('auth')->name('add-beneficiarie');
+    Route::post('ngo/store-beneficiarie/{id}', 'storeSurvey')->middleware('auth')->name('store-beneficiarie');
+    Route::get('ngo/beneficiarie-facilities', 'SurveyList')->middleware('auth')->name('beneficiarie-facilities');
+    Route::get('ngo/add-beneficiarie-facilities/{beneficiarie_id}/survey/{survey_id}', 'addbeneficiarieFacilities')->middleware('auth')->name('add-beneficiarie-facilities');
+    Route::post('ngo/store-beneficiarie-facilities/{beneficiarie_id}/survey/{survey_id}', 'storebeneficiariefacilities')->middleware('auth')->name('store-beneficiarie-facilities');
+    Route::get('ngo/beneficiarie-Facilities-list', 'beneficiarieFacilitiesList')->middleware('auth')->name('beneficiarie-facilities-list');
+    Route::get('ngo/edit-beneficiarie/{id}', 'editbeneficiarie')->middleware('auth')->name('edit-beneficiarie');
+    Route::post('ngo/update-beneficiare/{id}', 'updatebeneficiarie')->middleware('auth')->name('update-beneficiarie');
+    Route::get('ngo/show-beneficiarie-survey/{beneficiarie_id}/survey/{survey_id}', 'showbeneficiariesurvey')->middleware('auth')->name('show-beneficiarie-survey');
+    Route::get('ngo/delete-survey/{beneficiarie_id}/survey/{survey_id}', 'deletesurvey')->middleware('auth')->name('delete-survey');
+    Route::get('ngo/show-beneficiarie-facilities/{beneficiarie_id}/survey/{survey_id}/facilities/{facilities_id}', 'showbeneficiariefacilities')->middleware('auth')->name('show-beneficiarie-facilities');
+    Route::get('ngo/edit-facilities/{beneficiarie_id}/facilities/{facilities_id}', 'editFacilities')->middleware('auth')->name('edit-facilities');
+    Route::post('ngo/update-facilities/{beneficiarie_id}/facility/{facility_id}', 'updateFacilities')->middleware('auth')->name('update-facilities');
+    Route::get('ngo/distribute-beneficiarie-facilities/{beneficiarie_id}/facility/{facility_id}', 'distributebeneficiarieFacilities')->middleware('auth')->name('distribute-beneficiarie-facilities');
+    Route::post('ngo/store-distribute-facilities/{beneficiarie_id}/facility/{facility_id}', 'storedistributefacilities')->middleware('auth')->name('store-distribute-facilities');
+    Route::get('ngo/edit-distribute-facilities/{beneficiarie_id}/facility/{facility_id}', 'EditDistributeFacilities')->middleware('auth')->name('edit-distribute-facilities');
+    Route::post('ngo/update-distribute-facilities/{beneficiarie_id}/facility/{facility_id}', 'Updatedistributefacilities')->middleware('auth')->name('update-distribute-facilities');
+    Route::get('ngo/distributed-facilities', 'distributefacilities')->middleware('auth')->name('distributed-list');
+    Route::get('ngo/all-beneficiarie-list', 'allbeneficiarielist')->middleware('auth')->name('all-beneficiarie-list');
+    Route::get('ngo/Pending-facilities', 'pendingfacilities')->middleware('auth')->name('pending-distribute-list');
+    Route::get('ngo/beneficiarie-report-list', 'beneficiarieReportList')->middleware('auth')->name('beneficiarie-report-list');
+    Route::get('ngo/show-beneficiarie-report/{beneficiarie_id}/facility/{facility_id}', 'showbeneficiariereport')->middleware('auth')->name('show-beneficiarie-report');
+    Route::get('ngo/Survey-received-list', 'surveyrecivedlist')->middleware('auth')->name('survey-received-list');
 });
 
 Route::controller(WorkingAreaController::class)->group(function () {

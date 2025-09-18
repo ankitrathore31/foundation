@@ -48,4 +48,13 @@ class Beneficiarie extends Model
         'delete_reason',
         'delete_date',
     ];
+
+    public function Surveys()
+    {
+        return $this->hasMany(BeneficiareSurvey::class, 'beneficiarie_id');
+    }
+    public function facilities()
+    {
+        return $this->hasMany(BeneficiareFacilities::class, 'beneficiarie_id');
+    }
 }

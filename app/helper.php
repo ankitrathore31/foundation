@@ -68,6 +68,33 @@ if (!function_exists('total_deleted')) {
     }
 }
 
+if(!function_exists('totalBene')){
+    function totalBene(){
+        $data = Beneficiarie::where('status', 1)->count();
+        return $data;
+    }
+}
+if(!function_exists('totalApproveBene')){
+    function totalApproveBene(){
+        return  Beneficiarie::where('survey_status', 1)->count();
+         
+    }
+}
+if (!function_exists('totalPendingBene')) {
+    function totalPendingBene()
+    {
+        return Beneficiarie::where('status', 1)
+            ->where('survey_status', 0)
+            ->count();
+    }
+}
+if (!function_exists('RejectBene')) {
+    function RejectBene()
+    {
+        return Beneficiarie::onlyTrashed()->count();
+    }
+}
+
 if(!function_exists('totalMember')){
     function totalMember(){
         $data = Member::count();
