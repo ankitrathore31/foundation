@@ -180,6 +180,55 @@
                     </li>
                 @endif
 
+                <!-- Beneficiaries -->
+                @if (
+                    !$isStaff ||
+                        $user->hasPermission('beneficiarie-add') ||
+                        $user->hasPermission('demand-facilities') ||
+                        $user->hasPermission('approval-facilities') ||
+                        $user->hasPermission('distributed-list') ||
+                        $user->hasPermission('pending-distribute') ||
+                        $user->hasPermission('all-beneficiarie-list'))
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle text-white" href="#" data-bs-toggle="dropdown"><i
+                                class="fas fa-project-diagram"></i> BENEFICIARIES</a>
+                        <ul class="dropdown-menu bg-primary">
+                            @if (!$isStaff || $user->hasPermission('beneficiarie-add'))
+                                <li><a class="dropdown-item" href="{{ route('beneficiarie-add-list') }}">Survey Add
+                                        Beneficiary
+                                        List</a></li>
+                            @endif
+                            {{-- <li><a class="dropdown-item" href="{{ route('survey-received-list') }}">Survey Recived List</a>
+                        </li> --}}
+                            @if (!$isStaff || $user->hasPermission('demand-facilities'))
+                                <li><a class="dropdown-item" href="{{ route('beneficiarie-facilities') }}">Demand
+                                        Beneficiary
+                                        Facilities</a></li>
+                            @endif
+                            @if (!$isStaff || $user->hasPermission('approval-facilities'))
+                                <li><a class="dropdown-item"
+                                        href="{{ route('beneficiarie-facilities-list') }}">Apporval Demand
+                                        Distribut Facilities List</a></li>
+                            @endif
+                            @if (!$isStaff || $user->hasPermission('distributed-facilities'))
+                                <li><a class="dropdown-item" href="{{ route('distributed-list') }}">Distributed
+                                        Beneficiary
+                                        Facilities List</a></li>
+                            @endif
+                            @if (!$isStaff || $user->hasPermission('pending-distribute'))
+                                <li><a class="dropdown-item" href="{{ route('pending-distribute-list') }}">Pending
+                                        Beneficiary
+                                        Facilities List</a></li>
+                            @endif
+                            {{-- @if (!$isStaff || $user->hasPermission('all-beneficiarie-list'))
+                                <li><a class="dropdown-item" href="{{ route('all-beneficiarie-list') }}">All
+                                        Beneficiary
+                                        List</a></li>
+                            @endif --}}
+                        </ul>
+                    </li>
+                @endif
+
                 <!-- Membership -->
                 @if (
                     !$isStaff ||

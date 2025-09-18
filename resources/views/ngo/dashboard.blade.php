@@ -117,7 +117,7 @@
                                     <i class="fas fa-user-plus fa-2x me-3"></i>
                                     <div>
                                         <p class="mb-1">Total Beneficiaries</p>
-                                        <h5 class="mb-0">{{-- $allbene --}}</h5>
+                                        <h5 class="mb-0">{{totalBene()}}</h5>
                                     </div>
                                 </div>
                             </div>
@@ -128,7 +128,7 @@
                                     <i class="fas fa-clock fa-2x me-3"></i>
                                     <div>
                                         <p class="mb-1">Pending Beneficiaries</p>
-                                        <h5 class="mb-0">{{-- $penbene --}}</h5>
+                                        <h5 class="mb-0">{{totalPendingBene()}}</h5>
                                     </div>
                                 </div>
                             </div>
@@ -140,7 +140,7 @@
                                     <i class="fas fa-check-circle fa-2x me-3"></i>
                                     <div>
                                         <p class="mb-1">Approved Beneficiaries</p>
-                                        <h5 class="mb-0">{{-- $apbene --}}</h5>
+                                        <h5 class="mb-0">{{totalApproveBene()}}</h5>
                                     </div>
                                 </div>
                             </div>
@@ -152,7 +152,7 @@
                                     <i class="fas fa-times-circle fa-2x me-3"></i>
                                     <div>
                                         <p class="mb-1">Rejected Beneficiaries</p>
-                                        <h5 class="mb-0">{{-- $rebene --}}</h5>
+                                        <h5 class="mb-0">{{RejectBene()}}</h5>
                                     </div>
                                 </div>
                             </div>

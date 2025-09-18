@@ -110,7 +110,7 @@ class RegistrationController extends Controller
         $data['status'] = 0;
 
         // Generate application_no
-        $prefix = '2191000';
+        $prefix = 'DCFAPN000';
         $latestMember = Member::where('application_no', 'LIKE', $prefix . '%')->latest('application_no')->first();
         $latestBeneficiary = Beneficiarie::where('application_no', 'LIKE', $prefix . '%')->latest('application_no')->first();
 
@@ -364,7 +364,7 @@ class RegistrationController extends Controller
             'registration_date' => 'required|date',
         ]);
 
-        $prefix = '2192000';
+        $prefix = 'DCFARN000';
 
         // Get latest registration_no from both models
         $latestBeneficiarie = beneficiarie::where('registration_no', 'LIKE', $prefix . '%')
@@ -378,11 +378,11 @@ class RegistrationController extends Controller
         // Extract sequence numbers, fallback to 54
         $lastSequenceBeneficiarie = $latestBeneficiarie
             ? (int)substr($latestBeneficiarie->registration_no, strlen($prefix))
-            : 54;
+            : 0;
 
         $lastSequenceMember = $latestMember
             ? (int)substr($latestMember->registration_no, strlen($prefix))
-            : 54;
+            : 0;
 
         // Determine the next sequence number
         $lastSequence = max($lastSequenceBeneficiarie, $lastSequenceMember);
@@ -737,7 +737,7 @@ class RegistrationController extends Controller
         $data['status'] = 0;
 
         // Generate unique application number
-        $prefix = '2191000';
+        $prefix = 'DCFAPN000';
         $latestMember = Member::where('application_no', 'LIKE', $prefix . '%')->orderByDesc('application_no')->first();
         $latestBeneficiary = beneficiarie::where('application_no', 'LIKE', $prefix . '%')->orderByDesc('application_no')->first();
 
