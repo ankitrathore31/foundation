@@ -62,8 +62,9 @@
                         <h5 class="card-title">Bank Transfer</h5>
                         <p class="card-text">
                             <strong>Bank:</strong> State Bank of India <br>
-                            <strong>Account No:</strong> 1234567890 <br>
-                            <strong>IFSC:</strong> SBIN0001234
+                            <strong>Account No:</strong> 44555708605 <br>
+                            <strong>IFSC:</strong> SBIN0001667 <br>
+                            <strong>Branch:</strong> ASAM CHAURAHA PILIBHIT
                         </p>
                     </div>
                 </div>
@@ -76,7 +77,7 @@
                         <i class="fa-solid fa-mobile-screen fa-2x text-primary mb-3"></i>
                         <h5 class="card-title">UPI Payment</h5>
                         <p class="card-text">
-                            <strong>UPI ID:</strong> dayaramfoundation@upi <br>
+                            <strong>UPI ID:</strong> Update Soon <br>
                             <strong>Phone:</strong> +91-9927311313
                         </p>
                     </div>
@@ -96,6 +97,28 @@
         </div>
     </div>
 </section>
+
+<!-- 2️⃣ Bank / UPI / QR Cards -->
+<section class="py-5 bg-light">
+    <div class="container">
+        <div class="row g-1">
+            <div class="col-lg-12 col-md-12">
+                <div class="card h-100 border-0 shadow-sm text-center">
+                    <div class="card-body">
+                        <h5 class="card-title">Check Payment</h5>
+                        <img src="{{ asset('images/check dayaram.jpeg') }}" alt="QR Code" class="img-fluid mb-3">
+
+                        <!-- Download Button -->
+                        <a href="{{ asset('images/check dayaram.jpeg') }}" download class="btn d-block w-25 btn-danger">
+                            <i class="fa-solid fa-download me-2"></i> Download
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
 
 <!-- 3️⃣ Causes / Donation Services -->
 <section class="py-5">
