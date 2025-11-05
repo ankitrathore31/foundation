@@ -48,7 +48,6 @@ class RegistrationController extends Controller
         ]);
     }
 
-
     public function StoreRegistration(Request $request)
     {
 
@@ -674,101 +673,95 @@ class RegistrationController extends Controller
         return view('home.registration.add-registration', compact('states', 'data'));
     }
 
-    public function onlineStoreRegistration(Request $request)
-    {
-        // Validation rules
-        $rules = [
-            'identity_no' => [
-                'required',
-                'string',
-                'max:255',
-                function ($attribute, $value, $fail) {
-                    if (
-                        \App\Models\beneficiarie::where('identity_no', $value)->exists() ||
-                        \App\Models\Member::where('identity_no', $value)->exists()
-                    ) {
-                        $fail('This identity card number is already registered.');
-                    }
-                }
-            ],
-            'academic_session'   => 'required',
-            'application_date'   => 'required|date',
-            'reg_type'           => 'required|in:Member,Beneficiaries',
-            'name'               => 'required|string|max:255',
-            'dob'                => 'required|date',
-            'gender'             => 'required|string|in:Male,Female,Other',
-            'phone'              => 'required|string|max:20',
-            'gurdian_name'       => 'required|string|max:255',
-            'mother_name'        => 'required|string|max:255',
-            'village'            => 'nullable|string|max:255',
-            'post'               => 'required|string|max:255',
-            'block'              => 'required|string|max:255',
-            'state'              => 'required|string|max:255',
-            'district'           => 'required|string|max:255',
-            'pincode'            => 'nullable|string|max:10',
-            'country'            => 'required|string|max:100',
-            'email'              => 'nullable|email|max:255',
-            'religion'           => 'required|string|max:100',
-            'religion_category'  => 'required|string|max:100',
-            'caste'              => 'required|string|max:100',
-            'image'              => 'nullable|image',
-            'identity_type'      => 'required|string|max:255',
-            'id_document'        => 'nullable|file|mimes:jpg,jpeg,png,pdf',
-            'occupation'         => 'required|string|max:255',
-            'eligibility'        => 'nullable|string|max:100',
-            'marital_status'     => 'required|string|in:Married,Unmarried',
-            'area_type'          => 'required|string|in:Rular,Urban',
-            'help_needed'        => 'nullable|string|max:255',
-        ];
+    // public function onlineStoreRegistration(Request $request)
+    // {
+    //     $rules = [
+    //         'identity_no' => [
+    //             'required',
+    //             'string',
+    //             'max:255',
+    //             function ($attribute, $value, $fail) {
+    //                 if (
+    //                     \App\Models\beneficiarie::where('identity_no', $value)->exists() ||
+    //                     \App\Models\Member::where('identity_no', $value)->exists()
+    //                 ) {
+    //                     $fail('This identity card number is already registered.');
+    //                 }
+    //             }
+    //         ],
+    //         'academic_session'   => 'required',
+    //         'application_date'   => 'required|date',
+    //         'reg_type'           => 'required|in:Member,Beneficiaries',
+    //         'name'               => 'required|string|max:255',
+    //         'dob'                => 'required|date',
+    //         'gender'             => 'required|string|in:Male,Female,Other',
+    //         'phone'              => 'required|string|max:20',
+    //         'gurdian_name'       => 'required|string|max:255',
+    //         'mother_name'        => 'required|string|max:255',
+    //         'village'            => 'nullable|string|max:255',
+    //         'post'               => 'required|string|max:255',
+    //         'block'              => 'required|string|max:255',
+    //         'state'              => 'required|string|max:255',
+    //         'district'           => 'required|string|max:255',
+    //         'pincode'            => 'nullable|string|max:10',
+    //         'country'            => 'required|string|max:100',
+    //         'email'              => 'nullable|email|max:255',
+    //         'religion'           => 'required|string|max:100',
+    //         'religion_category'  => 'required|string|max:100',
+    //         'caste'              => 'required|string|max:100',
+    //         'image'              => 'nullable|image',
+    //         'identity_type'      => 'required|string|max:255',
+    //         'id_document'        => 'nullable|file|mimes:jpg,jpeg,png,pdf',
+    //         'occupation'         => 'required|string|max:255',
+    //         'eligibility'        => 'nullable|string|max:100',
+    //         'marital_status'     => 'required|string|in:Married,Unmarried',
+    //         'area_type'          => 'required|string|in:Rular,Urban',
+    //         'help_needed'        => 'nullable|string|max:255',
+    //     ];
 
-        $validator = Validator::make($request->all(), $rules);
+    //     $validator = Validator::make($request->all(), $rules);
 
-        // Conditional validation
-        $validator->sometimes('help_needed', 'required|string|max:255', function ($input) {
-            return $input->reg_type === 'Beneficiaries';
-        });
+    //     $validator->sometimes('help_needed', 'required|string|max:255', function ($input) {
+    //         return $input->reg_type === 'Beneficiaries';
+    //     });
 
-        if ($validator->fails()) {
-            return back()->withErrors($validator)->withInput();
-        }
+    //     if ($validator->fails()) {
+    //         return back()->withErrors($validator)->withInput();
+    //     }
 
-        // Collect data
-        $data = $request->only(array_keys($rules));
-        $data['status'] = 0;
+    //     $data = $request->only(array_keys($rules));
+    //     $data['status'] = 0;
 
-        // Generate unique application number
-        $prefix = 'DCFAPN000';
-        $latestMember = Member::where('application_no', 'LIKE', $prefix . '%')->orderByDesc('application_no')->first();
-        $latestBeneficiary = beneficiarie::where('application_no', 'LIKE', $prefix . '%')->orderByDesc('application_no')->first();
+    //     $prefix = 'DCFAPN000';
+    //     $latestMember = Member::where('application_no', 'LIKE', $prefix . '%')->orderByDesc('application_no')->first();
+    //     $latestBeneficiary = beneficiarie::where('application_no', 'LIKE', $prefix . '%')->orderByDesc('application_no')->first();
 
-        $lastSequence = max(
-            $latestMember ? (int)substr($latestMember->application_no, strlen($prefix)) : 0,
-            $latestBeneficiary ? (int)substr($latestBeneficiary->application_no, strlen($prefix)) : 0
-        );
+    //     $lastSequence = max(
+    //         $latestMember ? (int)substr($latestMember->application_no, strlen($prefix)) : 0,
+    //         $latestBeneficiary ? (int)substr($latestBeneficiary->application_no, strlen($prefix)) : 0
+    //     );
 
-        $data['application_no'] = $prefix . str_pad($lastSequence + 1, 3, '0', STR_PAD_LEFT);
+    //     $data['application_no'] = $prefix . str_pad($lastSequence + 1, 3, '0', STR_PAD_LEFT);
 
-        // Handle file uploads
-        $folder = $request->reg_type === 'Beneficiaries' ? 'benefries_images' : 'member_images';
+    //     $folder = $request->reg_type === 'Beneficiaries' ? 'benefries_images' : 'member_images';
 
-        if ($request->hasFile('image')) {
-            $data['image'] = time() . '.' . $request->image->getClientOriginalExtension();
-            $request->image->move(public_path($folder), $data['image']);
-        }
+    //     if ($request->hasFile('image')) {
+    //         $data['image'] = time() . '.' . $request->image->getClientOriginalExtension();
+    //         $request->image->move(public_path($folder), $data['image']);
+    //     }
 
-        if ($request->hasFile('id_document')) {
-            $data['id_document'] = time() . '_iddoc.' . $request->id_document->getClientOriginalExtension();
-            $request->id_document->move(public_path($folder), $data['id_document']);
-        }
+    //     if ($request->hasFile('id_document')) {
+    //         $data['id_document'] = time() . '_iddoc.' . $request->id_document->getClientOriginalExtension();
+    //         $request->id_document->move(public_path($folder), $data['id_document']);
+    //     }
 
-        // Create record based on type
-        $record = $request->reg_type === 'Beneficiaries'
-            ? beneficiarie::create($data)
-            : Member::create($data);
+    //     $record = $request->reg_type === 'Beneficiaries'
+    //         ? beneficiarie::create($data)
+    //         : Member::create($data);
 
-        return view('home.registration.success-registration', compact('record'))
-            ->with('success', 'Registration saved successfully.');
-    }
+    //     return view('home.registration.success-registration', compact('record'))
+    //         ->with('success', 'Registration saved successfully.');
+    // }
 
     public function onlineregistrationSetting()
     {

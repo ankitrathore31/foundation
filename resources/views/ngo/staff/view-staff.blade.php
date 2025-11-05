@@ -1,6 +1,8 @@
 @extends('ngo.layout.master')
 @Section('content')
     <style>
+        /* Reset print layout */
+
         .print-red-bg {
             background-color: red !important;
             /* Bootstrap 'bg-danger' color */
@@ -20,7 +22,6 @@
             text-align: center;
         }
 
-        /* Reset print layout */
         @media print {
             @page {
                 size: A4;
@@ -34,6 +35,13 @@
             .print-card,
             .print-card * {
                 visibility: visible;
+            }
+
+            .btn,
+            .navbar,
+            .footer,
+            .no-print {
+                display: none !important;
             }
 
             .print-card {
@@ -104,6 +112,7 @@
                 font-weight: bold;
             }
 
+
             .print-red-bg {
                 background-color: red !important;
                 /* Bootstrap 'bg-danger' color */
@@ -129,11 +138,11 @@
         <div class="container-fluid mt-4">
 
             <div class="d-flex justify-content-between align-items-center mb-3">
-                <h5 class="mb-0">Approve Registraition Form</h5>
+                <h5 class="mb-0">Staff</h5>
                 <nav aria-label="breadcrumb">
                     <ol class="breadcrumb bg-light px-3 py-2 mb-0 rounded">
-                        <li class="breadcrumb-item"><a href="{{ url('dashboard') }}">Dashboard</a></li>
-                        <li class="breadcrumb-item active" aria-current="page">Approve Form</li>
+                        <li class="breadcrumb-record"><a href="{{ url('dashboard') }}">Dashboard</a></li>
+                        <li class="breadcrumb-record active" aria-current="page">&nbsp;  Staff</li>
                     </ol>
                 </nav>
             </div>
@@ -144,7 +153,7 @@
             @endif
             <div class="container my-4">
                 <div class="d-flex justify-content-between align-items-center mb-4">
-                    <h2 class="fw-bold">Apporve Registration Form</h2>
+                    <h2 class="fw-bold">Staff Info</h2>
                     <button onclick="window.print()" class="btn btn-primary">Print / Download</button>
                 </div>
 
@@ -162,6 +171,7 @@
                                         &nbsp; &nbsp;<span>PAN: AAEAG7650B</span>&nbsp;
                                     </b></p> --}}
                                 <h4 class="print-h4"><b>
+                                        {{-- <span data-lang="hi">ज्ञान भारती संस्था</span> --}}
                                         <span>{{ ngo_info('title') }}</span>
                                     </b></h4>
                                 <h6 style="color: blue;"><b>
@@ -183,17 +193,8 @@
                             {{ \Carbon\Carbon::parse($record->application_date)->format('d-m-Y') }}
                         </div>
                         <div class="col-sm-4 mb-3">
-                            <strong>Application No:</strong> {{ $record->application_no }}
-                        </div>
-                        <div class="col-sm-4 mb-3">
-                            <strong>Registraition Type:</strong> {{ $record->reg_type }}
-                        </div>
-                        <div class="col-sm-4 mb-3">
-                            <strong>Registraition No:</strong> {{ $record->registration_no }}
-                        </div>
-                        <div class="col-sm-4 mb-3">
-                            <strong>Registraition Date:</strong>
-                            {{ \Carbon\Carbon::parse($record->registraition_date)->format('d-m-Y') }}
+                            <strong>Joining Date:</strong>
+                            {{ \Carbon\Carbon::parse($record->joining_date)->format('d-m-Y') }}
                         </div>
                         <div class="col-sm-4 mb-3">
                             <strong>Session:</strong> {{ $record->academic_session }}
@@ -204,14 +205,17 @@
                         <div class="col-sm-8">
                             <div class="row">
                                 <div class="col-sm-6 mb-3">
+                                    <strong>Position:</strong> {{ $record->position }}
+                                </div>
+                                <div class="col-sm-6 mb-3">
                                     <strong>Name:</strong> {{ $record->name }}
                                 </div>
                                 <div class="col-sm-6 mb-3">
                                     <strong>Guardian's Name:</strong> {{ $record->gurdian_name }}
                                 </div>
-                                <div class="col-sm-6 mb-3">
+                                {{-- <div class="col-sm-6 mb-3">
                                     <strong>Mother's Name:</strong> {{ $record->mother_name }}
-                                </div>
+                                </div> --}}
                                 <div class="col-sm-6 mb-3">
                                     <strong>Area Type:</strong> {{ $record->area_type }}
                                 </div>
@@ -236,16 +240,9 @@
                             </div>
                         </div>
                         <div class="col-sm-4">
-                            @php
-                                $imagePath = $record->reg_type === 'Member' ? 'member_images/' : 'benefries_images/';
-                            @endphp
-
                             {{-- @if ($record->image) --}}
                             <div class=" mb-3">
-                                <img src="{{ asset($imagePath . $record->image) }}" alt="Image" class="img-thumbnail"
-                                    width="150">
-                                {{-- <br>
-                                    <strong class="text-center"> Image:</strong> --}}
+                                <img src="{{ asset($record->image) }}" alt="Image" class="img-thumbnail" width="150">
                             </div>
                             {{-- @endif --}}
                         </div>
@@ -264,16 +261,11 @@
                         <div class="col-sm-4 mb-3">
                             <strong>Email:</strong> {{ $record->email ?? 'N/A' }}
                         </div>
-
-
                         <div class="col-sm-4 mb-3">
-                            <strong>Eligibility:</strong> {{ $record->eligibility ?? 'N/A' }}
+                            <strong>Cast:</strong> {{ $record->caste }}
                         </div>
                         <div class="col-sm-4 mb-3">
-                            <strong>Caste:</strong> {{ $record->caste }}
-                        </div>
-                        <div class="col-sm-4 mb-3">
-                            <strong>Religion Category:</strong> {{ $record->religion_category }}
+                            <strong>Religion Category:</strong> {{ $record->caste_category }}
                         </div>
                         <div class="col-sm-4 mb-3">
                             <strong>Religion:</strong> {{ $record->religion }}
@@ -289,45 +281,107 @@
                             <strong>Marital Status:</strong> {{ $record->marital_status }}
                         </div>
                         <div class="col-sm-4 mb-3">
-                            <strong>Occupation:</strong> {{ $record->occupation }}
+                            <strong>Eligibility:</strong> {{ $record->eligibility ?? 'N/A' }}
                         </div>
-
+                        <div class="col-sm-4 mb-3">
+                            <strong>Degree:</strong> {{ $record->degree }}
+                        </div>
+                        <div class="col-sm-4 mb-3">
+                            <strong>Experience:</strong> {{ $record->experience }} Year
+                        </div>
                         <div class="col-sm-4 mb-3">
                             <strong>Identity Type:</strong> {{ $record->identity_type }}
                         </div>
                         <div class="col-sm-4 mb-3">
                             <strong>Identity Number:</strong> {{ $record->identity_no }}
                         </div>
-                        @php
-                            $imagePath = $record->reg_type === 'Member' ? 'member_images/' : 'benefries_images/';
-                        @endphp
-
-                        <div class="col-sm-4 mb-3">
-
-                            <strong>ID Document:</strong>
-                            <a href="{{ asset($imagePath . $record->id_document) }}" target="_blank">View Document</a>
+                    </div>
+                    <div class="row mb-2 no-print">
+                        <div class="col-sm-12">
+                            <strong>Password</strong> &nbsp; {{$record->password}}
+                        </div>
+                    </div>
+                    <div class="row mb-3 no-print">
+                        <h5>- Staff Power</h5>
+                        <div class="col-sm-12">
+                            @php
+                            $permissions = json_decode($record->permissions); @endphp
+                            @if (!empty($permissions))
+                                <ul class="mb-0">
+                                    @foreach ($permissions as $perm)
+                                        <li>{{ str_replace('-', ' ', $perm) }}</li>
+                                    @endforeach
+                                </ul>
+                            @else
+                                <small class="text-muted">No Permissions assigned</small>
+                            @endif
+                        </div>
+                    </div>
+                    <div class="row no-print">
+                        {{-- ID Document --}}
+                        <div class="col-md-4 mb-3">
+                            <label for="id_document" class="form-label">ID Document</label>
+                            @if (isset($record) && $record->id_document)
+                                <div class="mb-2">
+                                    @if (Str::endsWith($record->id_document, ['.jpg', '.jpeg', '.png']))
+                                        <img src="{{ asset($record->id_document) }}" alt="ID Document" class="img-fluid"
+                                            style="max-height: 150px;">
+                                    @else
+                                        <a href="{{ asset($record->id_document) }}" target="_blank">View ID
+                                            Document (PDF)</a>
+                                    @endif
+                                </div>
+                            @endif
 
                         </div>
 
-                    </div>
-                    <div class="row">
-                        @if ($record->reg_type == 'Beneficiaries')
-                            <div class="col-sm-8 mb-3">
-                                <strong>Help Needed:</strong> {{ $record->help_needed }}
-                            </div>
-                        @endif
+                        {{-- Experience Document --}}
+                        <div class="col-md-4 mb-3">
+                            <label for="experience_document" class="form-label">Experience Document</label>
+                            @if (isset($record) && $record->experience_document)
+                                <div class="mb-2">
+                                    @if (Str::endsWith($record->experience_document, ['.jpg', '.jpeg', '.png']))
+                                        <img src="{{ asset($record->experience_document) }}" alt="Experience Document"
+                                            class="img-fluid" style="max-height: 150px;">
+                                    @else
+                                        <a href="{{ asset($record->experience_document) }}" target="_blank">View
+                                            Experience Document (PDF)</a>
+                                    @endif
+                                </div>
+                            @endif
+
+                        </div>
+
+                        {{-- Marksheet --}}
+                        <div class="col-md-4 mb-3">
+                            <label for="marksheet" class="form-label">Marksheet Upload</label>
+                            @if (isset($record) && $record->marksheet)
+                                <div class="mb-2">
+                                    @if (Str::endsWith($record->marksheet, ['.jpg', '.jpeg', '.png']))
+                                        <img src="{{ asset($record->marksheet) }}" alt="Marksheet" class="img-fluid"
+                                            style="max-height: 150px;">
+                                    @else
+                                        <a href="{{ asset($record->marksheet) }}" target="_blank">View
+                                            Marksheet
+                                            (PDF)</a>
+                                    @endif
+                                </div>
+                            @endif
+
+                        </div>
                     </div>
                     <hr>
                     <div class="row d-flex justify-content-between mt-2">
-                        <div class="col-sm-4 mb-5">
-                            <label for="" class="from-label"><b>{{ $record->reg_type }} Signature</b></label>
+                        <div class="col-sm-5 mb-5">
+                            <label for="" class="from-label"><b>Staff
+                                    Signature</b></label>
                         </div>
-                        <div class="col-sm-5 text-end">
+                        <div class="col-sm-5 text-center">
                             @if (!empty($signatures['director']) && file_exists(public_path($signatures['director'])))
                                 <div id="directorSignatureBox" class="mt-2">
                                     <p class="text-success no-print">Attached</p>
-                                    <img src="{{ asset($signatures['director']) }}" alt="Director Signature" class="img"
-                                        style="max-height: 100px;">
+                                    <img src="{{ asset($signatures['director']) }}" alt="Director Signature"
+                                        class="img" style="max-height: 100px;">
                                     <br>
                                     <button class="btn btn-danger btn-sm mt-2 no-print"
                                         onclick="toggleDirector(false)">Remove</button>
@@ -349,14 +403,6 @@
             </div>
         </div>
     </div>
-    <script>
-        function setLanguage(lang) {
-            document.querySelectorAll('[data-lang]').forEach(el => {
-                el.style.display = el.getAttribute('data-lang') === lang ? 'inline' : 'none';
-            });
-        }
-        window.onload = () => setLanguage('en'); // Set Eng as default
-    </script>
     <script>
         function togglePM(show) {
             document.getElementById('pmSignatureBox').classList.toggle('d-none', !show);

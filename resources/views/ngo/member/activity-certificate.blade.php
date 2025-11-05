@@ -80,37 +80,34 @@
             </div>
             <div class="card shadow rounded p-4 my-4 border border-dark print-card">
                 <div class="text-center mb-4 border-bottom pb-2">
-                    <!-- Header -->
-                    <div class="row">
-                        <div class="col-sm-2 text-center text-md-start">
-                            <img src="{{ asset('images/LOGO.png') }}" alt="Logo" width="80" height="80">
-                        </div>
-                        <div class="col-sm-10">
-                            <p style="margin: 0;" class="d-flex justify-content-around"><b>
-                                    <span>NEETI AYOG ID NO. UP/2023/0360430</span>&nbsp;
-                                   &nbsp; &nbsp;<span>NGO NO. UP/00033062</span>&nbsp; &nbsp;
-                                    &nbsp; &nbsp;<span>PAN: AAEAG7650B</span>&nbsp;
-                                </b></p>
-                            <h4 style="color: red;"><b>
-                                    <span data-lang="hi">ज्ञान भारती संस्था</span>
-                                    <span data-lang="en">GYAN BHARTI SANSTHA</span>
-                                </b></h4>
-                            <h6 style="color: blue;"><b>
-                                    <span data-lang="hi">ग्राम - कैंचू टांडा, पोस्ट - अमरिया, जिला - पीलीभीत, उत्तर प्रदेश -
-                                        262121</span>
-                                    <span data-lang="en">Village - Kainchu Tanda, Post - Amaria, District - Pilibhit, UP -
-                                        262121</span>
-                                </b></h6>
-                            <p style="font-size: 14px; margin: 0;">
-                                <b>
-                                    <span>Website: www.gyanbhartingo.org | Email: gyanbhartingo600@gmail.com
-                                        | Mob:
-                                        9411484111</span>
-                                </b>
-                            </p>
+                        <!-- Header -->
+                        <div class="row">
+                            <div class="col-sm-2 text-center text-md-start">
+                                <img src="{{ asset(ngo_info('logo')) }}" alt="Logo" width="100" height="100">
+                            </div>
+                            <div class="col-sm-10">
+                                {{-- <p style="margin: 0;" class="d-flex justify-content-around"><b>
+                                        <span>NEETI AYOG ID NO. UP/2023/0360430</span>&nbsp;
+                                        &nbsp; &nbsp;<span>NGO NO. UP/00033062</span>&nbsp; &nbsp;
+                                        &nbsp; &nbsp;<span>PAN: AAEAG7650B</span>&nbsp;
+                                    </b></p> --}}
+                                <h4 class="print-h4"><b>
+                                        {{-- <span data-lang="hi">ज्ञान भारती संस्था</span> --}}
+                                        <span>{{ ngo_info('title') }}</span>
+                                    </b></h4>
+                                <h6 style="color: blue;"><b>
+                                        <span>{{ ngo_info('address') }}</span>
+                                    </b></h6>
+                                <p style="font-size: 14px; margin: 0;">
+                                    <b>
+                                        <span>{{ ngo_info('website') }} | Email: {{ ngo_info('email') }}
+                                            | Mob:
+                                            {{ ngo_info('phone') }}</span>
+                                    </b>
+                                </p>
+                            </div>
                         </div>
                     </div>
-                </div>
 
                 <!-- Donation Fields -->
                 <div class="row d-flex justify-content-between">
@@ -234,8 +231,8 @@
                     <div class="col-sm-7 mb-2">
                         <div style="display: flex; align-items: flex-start; width: 100%;">
                             <strong style="white-space: nowrap; margin-right: 5px;">
-                                <span data-lang="hi">के निवासी हैं तथा ज्ञान भारती संस्था के साथ मिलकर समाज में </span>
-                                <span data-lang="en">is a resident of and has contributed towards in Gyan Bharti Sanstha</span>
+                                <span data-lang="hi">के निवासी हैं तथा दयाराम चैरिटेबल फाउंडेशन के साथ मिलकर समाज में </span>
+                                <span data-lang="en">is a resident of and has contributed towards in Dayaram Charitable Foundation</span>
                             </strong>
                             <div
                                 style="flex-grow: 1; border-bottom: 1px dotted #000; white-space: normal; overflow-wrap: break-word;">

@@ -310,6 +310,58 @@
                     </li>
                 @endif
 
+                <!-- Staff -->
+                @if (
+                    !$isStaff ||
+                        $user->hasPermission('add-staff') ||
+                        $user->hasPermission('staff-list') ||
+                        $user->hasPermission('appointment-letter') ||
+                        $user->hasPermission('resign-letter') ||
+                        $user->hasPermission('staff-salary') ||
+                        $user->hasPermission('staff-idcard') ||
+                        $user->hasPermission('staff-passbook') ||
+                        $user->hasPermission('staff-activity'))
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle text-white" href="#" data-bs-toggle="dropdown">
+                            <i class="fas fa-users"></i> STAFF
+                        </a>
+                        <ul class="dropdown-menu bg-primary">
+                            @if (!$isStaff || $user->hasPermission('add-staff'))
+                                <li><a class="dropdown-item" href="{{ route('add-staff') }}">Add Staff</a></li>
+                            @endif
+                            @if (!$isStaff || $user->hasPermission('staff-list'))
+                                <li><a class="dropdown-item" href="{{ route('staff-list') }}">Staff List</a></li>
+                            @endif
+                            @if (!$isStaff || $user->hasPermission('appointment-letter'))
+                                <li><a class="dropdown-item" href="{{ route('staff.list.letter') }}">Staff
+                                        Appointment Letter</a></li>
+                            @endif
+                            @if (!$isStaff || $user->hasPermission('resign-letter'))
+                                <li><a class="dropdown-item" href="#">Staff Resign Letter</a></li>
+                            @endif
+                            @if (!$isStaff || $user->hasPermission('staff-salary'))
+                                <li><a class="dropdown-item" href="{{ route('staff.salary') }}">Staff Salary</a></li>
+                            @endif
+                            {{-- @if (!$isStaff || $user->hasPermission('staff-idcard'))
+                                <li><a class="dropdown-item" href="{{ route('staff-idcard') }}">Staff ID Card</a>
+                                </li>
+                            @endif --}}
+                            {{-- @if (!$isStaff || $user->hasPermission('staff-passbook'))
+                                <li><a class="dropdown-item" href="#">Staff Passbook</a></li>
+                            @endif --}}
+                            {{-- @if (!$isStaff || $user->hasPermission('staff-activity'))
+                                <li><a class="dropdown-item" href="#">Staff Activity</a></li>
+                            @endif --}}
+                            @if (!$isStaff || $user->hasPermission('manage-salary'))
+                                <li><a class="dropdown-item" href="{{ route('list.salary') }}">Manage Salary</a></li>
+                            @endif
+                            <li><a class="dropdown-item" href="{{ route('position.list') }}">Manage Staff
+                                    Position</a></li>
+                            {{-- <li><a class="dropdown-item" href="{{ route('list.job') }}">Jobs</a></li> --}}
+                        </ul>
+                    </li>
+                @endif
+
                 <!-- Gallery -->
                 @if (!$isStaff || $user->hasPermission('add-photos') || $user->hasPermission('gallery-list'))
                     <li class="nav-item dropdown">
