@@ -1,0 +1,13 @@
+<?php
+
+namespace App\Models;
+
+use Illuminate\Database\Eloquent\Model;
+
+class Sallary extends Model
+{
+     protected $fillable = [
+        'position',
+        'salary',
+    ];
+}

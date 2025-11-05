@@ -96,7 +96,6 @@
                             </div>
                             <div class="col-sm-10">
                                 <h4 class="print-h4"><b>
-                                        {{-- <span data-lang="hi">ज्ञान भारती संस्था</span> --}}
                                         <span>{{ ngo_info('title') }}</span>
                                     </b></h4>
                                 <h6 style="color: blue;"><b>

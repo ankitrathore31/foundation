@@ -13,8 +13,10 @@ use App\Http\Controllers\NoticeController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ProjectController;
 use App\Http\Controllers\RegistrationController;
+use App\Http\Controllers\SallaryController;
 use App\Http\Controllers\SessionController;
 use App\Http\Controllers\SignatureController;
+use App\Http\Controllers\StaffController;
 use App\Http\Controllers\WorkingAreaController;
 use Illuminate\Support\Facades\Route;
 
@@ -208,6 +210,39 @@ Route::controller(BeneficiareController::class)->group(function () {
     Route::get('ngo/Survey-received-list', 'surveyrecivedlist')->middleware('auth')->name('survey-received-list');
 });
 
+Route::controller(StaffController::class)->group(function () {
+    Route::get('ngo/add-position', 'addPosition')->middleware('auth')->name('add.position');
+    Route::post('ngo/store-sposition', 'StorePosition')->middleware('auth')->name('store.position');
+    Route::get('ngo/delete-position/{id}', 'DeletePosition')->middleware('auth')->name('delete.position');
+    Route::get('ngo/position-list','PositionList')->middleware('auth')->name('position.list');
+    Route::get('ngo/add-staff', 'addstaff')->middleware('auth')->name('add-staff');
+    Route::post('ngo/store-staff', 'StoreStaff')->middleware('auth')->name('store.staff');
+    Route::get('ngo/edit-staff/{id}', 'EditStaff')->middleware('auth')->name('edit-staff');
+    Route::post('ngo/update-staff/{id}', 'UpdateStaff')->middleware('auth')->name('update.staff');
+    Route::get('ngo/delete-staff/{id}', 'DeleteStaff')->middleware('auth')->name('delete-staff');
+    Route::get('ngo/staff-list', 'staffList')->middleware('auth')->name('staff-list');
+    Route::get('ngo/view-staff/{id}', 'ViewStaff')->middleware('auth')->name('view-staff');
+    Route::get('ngo/staff-letter-list', 'staffListLetter')->middleware('auth')->name('staff.list.letter');
+    Route::get('ngo/view-appointment/{id}', 'ViewAppointment')->middleware('auth')->name('view.appointment.letter');
+    Route::get('ngo/view-resign/{id}', 'ViewResign')->middleware('auth')->name('view.resign.letter');
+});
+
+Route::controller(SallaryController::class)->middleware('auth')->group(function () {
+    Route::get('ngo/salary-list', 'SalaryList')->name('list.salary');
+    Route::get('ngo/add-salary', 'ManageSalary')->name('manage.salary');
+    Route::post('ngo/store-salary', 'StoreSalary')->name('store.salary');
+    Route::get('ngo/edit-salary/{id}', 'EditSalary')->name('edit.salary');
+    Route::post('ngo/update-salary/{id}', 'UpdateSalary')->name('update.salary');
+    Route::get('ngo/delete-salary/{id}', 'DeleteSalary')->name('delete.salary');
+    Route::get('ngo/staff-salary', 'StaffSalary')->name('staff.salary');
+    Route::get('ngo/pay-salary/{id}', 'PaySalary')->name('pay.salary');
+    Route::post('ngo/store-salary/{id}', 'storeSalaryPayment')->name('store.salary.payment');
+    Route::post('ngo/unpaid-salary/{id}','unpaySalary')->name('unpaid.salary');
+    Route::get('ngo/salary-tranctions/{id}','salaryTransactions')->name('salary.transactions');
+    Route::get('ngo/staff-passbook/{id}','staffPassbook')->name('salary.passbook');
+
+});
+
 Route::controller(WorkingAreaController::class)->group(function () {
     Route::get('ngo/working-area', 'workingarea')->middleware('auth')->name('working-area');
     Route::post('ngo/store-area', 'storeArea')->middleware('auth')->name('store-area');
@@ -215,4 +250,11 @@ Route::controller(WorkingAreaController::class)->group(function () {
     Route::get('ngo/edit-area/{id}', 'editarea')->middleware('auth')->name('edit-area');
     Route::post('ngo/update-area/{id}', 'updatearea')->middleware('auth')->name('update-area');
     Route::get('ngo/delete-Working-area/{id}', 'removeArea')->middleware('auth')->name('remove-area');
+});
+
+Route::controller(IdcardController::class)->group(function () {
+    Route::get('ngo/member-idcard', 'MemberIdcard')->middleware('auth')->name('member-idcard');
+    Route::get('ngo/beneficiary-idcard', 'BeneficiaryIdcard')->name('beneficiary-idcard');
+    Route::get('ngo/donor-idcard', 'DonorIdcard')->middleware('auth')->name('donor-idcard');
+    Route::get('ngo/staff-idcard', 'StaffIdcard')->middleware('auth')->name('staff-idcard');
 });

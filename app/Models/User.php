@@ -45,4 +45,18 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
+     public function staff()
+    {
+        return $this->hasOne(Staff::class, 'email', 'email');
+    }
+
+    public function hasPermission($permission)
+    {
+        if (!$this->staff) {
+            \Log::warning("No staff record found for user ID {$this->id}, email: {$this->email}");
+            return false;
+        }
+
+        return $this->staff->hasPermission($permission);
+    }
 }

@@ -68,24 +68,33 @@
                     <h4 class=" p-3 bg-info rounded"><b>DELETE FORM </b></h4>
                 </div>
                 <div class="card p-4 shadow rounded print-card">
-                    <div class="text-center mb-4 border-bottom">
-                        <div class="row align-items-center">
+                    <div class="text-center mb-4 border-bottom pb-2">
+                        <!-- Header -->
+                        <div class="row">
                             <div class="col-sm-2 text-center text-md-start">
-                                <a href="https://gyanbhartingo.org">
-                                    <img src="{{ asset('images/LOGO.png') }}" alt="Logo" width="80" height="80"
-                                        class="">
-                                </a>
+                                <img src="{{ asset(ngo_info('logo')) }}" alt="Logo" width="100" height="100">
                             </div>
-                            <div class="col-sm-10 text-center">
-                                <h4 style="color: red; font-weight:500; font-size:25px;"><b>GYAN BHARTI SANSTHA</b></h4>
-                                <h6 style="color: blue;"><b>Head Office: Kainchu Tanda Amaria Pilibhit UP 262121</b></h6>
-                                <p><b>Website : www.gyanbhartingo.org Email : gyanbhartingo600@gmail.com Mob- 9411484111</b>
+                            <div class="col-sm-10">
+                                {{-- <p style="margin: 0;" class="d-flex justify-content-around"><b>
+                                        <span>NEETI AYOG ID NO. UP/2023/0360430</span>&nbsp;
+                                        &nbsp; &nbsp;<span>NGO NO. UP/00033062</span>&nbsp; &nbsp;
+                                        &nbsp; &nbsp;<span>PAN: AAEAG7650B</span>&nbsp;
+                                    </b></p> --}}
+                                <h4 class="print-h4"><b>
+                                        {{-- <span data-lang="hi">ज्ञान भारती संस्था</span> --}}
+                                        <span>{{ ngo_info('title') }}</span>
+                                    </b></h4>
+                                <h6 style="color: blue;"><b>
+                                        <span>{{ ngo_info('address') }}</span>
+                                    </b></h6>
+                                <p style="font-size: 14px; margin: 0;">
+                                    <b>
+                                        <span>{{ ngo_info('website') }} | Email: {{ ngo_info('email') }}
+                                            | Mob:
+                                            {{ ngo_info('phone') }}</span>
+                                    </b>
                                 </p>
                             </div>
-                            {{-- <div class="col-sm-4 text-center">
-                            <h4 style=" font-size:20px; color:brown;"><b>Session: {{ $activity->academic_session }}</b></h4>
-                            <p style=""><b>Activity Report</b></p>
-                        </div> --}}
                         </div>
                     </div>
                     <div class="row mb-3">
@@ -100,7 +109,7 @@
                             <strong>Registraition Type:</strong> {{ $record->reg_type }}
                         </div>
                         <div class="col-sm-4 mb-3">
-                            <strong>Registraition No:</strong> {{ $record->registration_no ?? 'Not Found'}}
+                            <strong>Registraition No:</strong> {{ $record->registration_no ?? 'Not Found' }}
                         </div>
                         <div class="col-sm-4 mb-3">
                             <strong>Registraition Date:</strong>
@@ -242,7 +251,8 @@
         </div>
 
         <div class="card mt-4 p-3 border border-danger rounded">
-            <form action="{{ route('delete-reg',['id' => $record->id, 'type' => $record->reg_type ?? 'Member']) }}" method="POST">
+            <form action="{{ route('delete-reg', ['id' => $record->id, 'type' => $record->reg_type ?? 'Member']) }}"
+                method="POST">
                 @csrf
                 <h5 class="text-danger">Delete Registration</h5>
 
