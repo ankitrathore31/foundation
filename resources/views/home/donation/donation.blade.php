@@ -100,8 +100,6 @@
                             <h5 class="card-title">Scan & Pay</h5>
                             <img src="{{ asset('images/qr.jpeg') }}" alt="QR Code" class="img-fluid mb-3"
                                 style="max-width:200px;">
-                            <p>(Director & Founder)</p>
-
                             <!-- Download QR Code Button -->
                             <a href="{{ asset('images/qr.jpeg') }}" download="Payment-QR.jpeg" class="btn btn-danger">
                                 <i class="fa-solid fa-download me-2"></i> Download QR
