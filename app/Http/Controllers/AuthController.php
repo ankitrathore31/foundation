@@ -57,6 +57,8 @@ class AuthController extends Controller
                 return redirect()->route('admin');
             } elseif ($user->user_type === 'ngo') {
                 return redirect()->route('ngo');
+            } elseif ($user->user_type === 'staff') {
+                return redirect()->route('ngo');
             } else {
                 Auth::logout(); // log out invalid role
                 return redirect()->back()->withErrors([
@@ -70,7 +72,6 @@ class AuthController extends Controller
         Auth::logout();
         $request->session()->invalidate();
         $request->session()->regenerateToken();
-
         return redirect()->route('login.page');
     }
 }
