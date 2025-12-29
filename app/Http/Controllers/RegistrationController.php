@@ -108,17 +108,33 @@ class RegistrationController extends Controller
         $data = $request->except(['image', 'id_document']);
         $data['status'] = 0;
 
-        // Generate application_no
+        // Generate application_no with proper sequence handling
         $prefix = 'DCFAPN000';
-        $latestMember = Member::where('application_no', 'LIKE', $prefix . '%')->latest('application_no')->first();
-        $latestBeneficiary = Beneficiarie::where('application_no', 'LIKE', $prefix . '%')->latest('application_no')->first();
+        $prefixLength = strlen($prefix);
 
+        // Get latest from Member table
+        $latestMember = Member::where('application_no', 'LIKE', $prefix . '%')
+            ->whereRaw("LENGTH(application_no) > ?", [$prefixLength])
+            ->selectRaw("CAST(SUBSTRING(application_no, ? + 1) AS UNSIGNED) as seq", [$prefixLength])
+            ->orderByDesc('seq')
+            ->first();
+
+        // Get latest from Beneficiary table
+        $latestBeneficiary = Beneficiarie::where('application_no', 'LIKE', $prefix . '%')
+            ->whereRaw("LENGTH(application_no) > ?", [$prefixLength])
+            ->selectRaw("CAST(SUBSTRING(application_no, ? + 1) AS UNSIGNED) as seq", [$prefixLength])
+            ->orderByDesc('seq')
+            ->first();
+
+        // Get the maximum sequence number
         $lastSequence = max(
-            $latestMember ? intval(substr($latestMember->application_no, strlen($prefix))) : 0,
-            $latestBeneficiary ? intval(substr($latestBeneficiary->application_no, strlen($prefix))) : 0
+            $latestMember ? $latestMember->seq : 0,
+            $latestBeneficiary ? $latestBeneficiary->seq : 0
         );
 
-        $data['application_no'] = $prefix . str_pad($lastSequence + 1, 3, '0', STR_PAD_LEFT);
+        // Generate new application number (no padding limit, grows naturally)
+        $data['application_no'] = $prefix . ($lastSequence + 1);
+
 
         // Set folder based on reg_type
         $folder = $request->reg_type === 'Member' ? 'member_images' : 'benefries_images';
@@ -363,30 +379,34 @@ class RegistrationController extends Controller
             'registration_date' => 'required|date',
         ]);
 
+        // Generate registration_no with proper sequence handling
         $prefix = 'DCFARN000';
+        $prefixLength = strlen($prefix);
 
-        // Get latest registration_no from both models
+        // Get latest from Beneficiarie table
         $latestBeneficiarie = beneficiarie::where('registration_no', 'LIKE', $prefix . '%')
-            ->orderBy('registration_no', 'desc')
+            ->whereRaw("LENGTH(registration_no) > ?", [$prefixLength])
+            ->selectRaw("CAST(SUBSTRING(registration_no, ? + 1) AS UNSIGNED) as seq", [$prefixLength])
+            ->orderByDesc('seq')
             ->first();
 
+        // Get latest from Member table
         $latestMember = Member::where('registration_no', 'LIKE', $prefix . '%')
-            ->orderBy('registration_no', 'desc')
+            ->whereRaw("LENGTH(registration_no) > ?", [$prefixLength])
+            ->selectRaw("CAST(SUBSTRING(registration_no, ? + 1) AS UNSIGNED) as seq", [$prefixLength])
+            ->orderByDesc('seq')
             ->first();
 
-        // Extract sequence numbers, fallback to 54
-        $lastSequenceBeneficiarie = $latestBeneficiarie
-            ? (int)substr($latestBeneficiarie->registration_no, strlen($prefix))
-            : 0;
-
-        $lastSequenceMember = $latestMember
-            ? (int)substr($latestMember->registration_no, strlen($prefix))
-            : 0;
+        // Extract sequence numbers (fallback to 0 if no records exist)
+        $lastSequenceBeneficiarie = $latestBeneficiarie ? $latestBeneficiarie->seq : 0;
+        $lastSequenceMember = $latestMember ? $latestMember->seq : 0;
 
         // Determine the next sequence number
         $lastSequence = max($lastSequenceBeneficiarie, $lastSequenceMember);
         $sequenceNumber = $lastSequence + 1;
-        $registrationNo = $prefix . str_pad($sequenceNumber, 3, '0', STR_PAD_LEFT);
+
+        // Final registration number (no padding limit, grows naturally)
+        $registrationNo = $prefix . $sequenceNumber;
 
         if ($type === 'Beneficiaries') {
             $beneficiarie = Beneficiarie::find($id);
