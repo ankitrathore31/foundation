@@ -1,80 +1,84 @@
+
 <style>
-    /* Navbar gradient background */
-    .navbar-gradient {
-        background: linear-gradient(90deg, #ff512f, #f09819);
-        /* red to saffron */
+    /* Horizontal scrollbar styling */
+    .navbar-nav::-webkit-scrollbar {
+        height: 6px;
     }
 
-    /* Navbar text styling */
+    .navbar-nav::-webkit-scrollbar-thumb {
+        background-color: rgba(255, 255, 255, 0.4);
+        border-radius: 10px;
+    }
+
+    /* Dropdown menu scroll */
+    .dropdown-menu {
+        max-height: 70vh;
+        overflow-y: auto;
+        background-color: var(--bs-primary);
+        /* bg-primary */
+        border: none;
+    }
+
+    /* Dropdown item text */
+    .dropdown-menu .dropdown-item {
+        color: #ffffff;
+        font-weight: 500;
+    }
+
+    /* Hover & focus state */
+    .dropdown-menu .dropdown-item:hover,
+    .dropdown-menu .dropdown-item:focus {
+        background-color: rgba(255, 255, 255, 0.15);
+        color: #ffffff;
+    }
+
+    /* Active dropdown item */
+    .dropdown-menu .dropdown-item.active,
+    .dropdown-menu .dropdown-item:active {
+        background-color: rgba(255, 255, 255, 0.25);
+        color: #ffffff;
+    }
+
+    /* Navbar link styling */
     .navbar-nav .nav-link {
-        color: white;
+        color: #ffffff;
         font-size: 16px;
         font-weight: 500;
-        transition: all 0.3s ease;
+        cursor: pointer;
     }
 
-    /* Navbar item hover effect */
-    .navbar-nav .nav-link:hover {
+    /* Navbar link hover */
+    .navbar-nav .nav-link:hover,
+    .navbar-nav .nav-link:focus {
+        color: #ffffff;
         background-color: rgba(255, 255, 255, 0.15);
-        border-radius: 6px;
-        padding: 6px 12px;
+        border-radius: 4px;
     }
 
-    /* Dropdown hover effect */
-    .navbar-nav .nav-item.dropdown:hover>.dropdown-menu {
-        display: block;
-        animation: fadeIn 0.3s ease;
-        /* z-index: 10 !important; */
+    /* Dropdown toggle arrow color */
+    .navbar-nav .dropdown-toggle::after {
+        border-top-color: #ffffff;
     }
 
-    /* Dropdown menu gradient */
-    .navbar-nav .dropdown-menu {
-        display: none;
-        background: linear-gradient(90deg, #ff512f, #f09819);
-        border: none;
-        border-radius: 8px;
-        padding: 0.5rem 0;
-    }
-
-    /* Dropdown item */
-    .dropdown-item {
-        color: white;
-        font-size: 14px;
-        font-weight: 500;
-        transition: all 0.3s ease;
-    }
-
-    /* Dropdown item hover */
+    /* Prevent Bootstrap default white hover */
     .dropdown-item:hover {
-        background-color: rgba(255, 255, 255, 0.2);
-        border-radius: 5px;
-        padding-left: 18px;
-        /* smooth slide-in */
+        background-image: none;
     }
 
-    /* Dropdown animation */
-    @keyframes fadeIn {
-        from {
-            opacity: 0;
-            transform: translateY(-5px);
-        }
-
-        to {
-            opacity: 1;
-            transform: translateY(0);
-        }
+    /* Make dropdowns appear in front */
+    /* Prevent menu items from being cut off */
+    .navbar-nav {
+        flex-wrap: wrap;
     }
 
-    /* Navbar brand */
-    .navbar-brand {
-        font-size: 22px;
-        font-weight: bold;
-        color: white !important;
+    .nav-item {
+        white-space: nowrap;
     }
 
-    /* Toggler (mobile) */
-    .navbar-toggler {
-        border: 1px solid rgba(255, 255, 255, 0.4);
+
+    .navbar-nav .nav-link {
+        padding: 0.5rem 0.8rem;
+        font-size: 0.9rem;
     }
 </style>
 
@@ -94,7 +98,7 @@
 
         <!-- Navbar content -->
         <div class="collapse navbar-collapse" id="mainNavbar">
-            <ul class="navbar-nav flex-wrap w-100 justify-content-center overflow-auto">
+            <ul class="navbar-nav">
 
                 <li class="nav-item">
                     <a href="{{ route('ngo') }}" class="nav-link"><i class="fas fa-tachometer-alt"></i>
